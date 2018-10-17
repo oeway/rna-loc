@@ -1,0 +1,74 @@
+# Project information
+site_name: RNA localizer
+site_description: An ImJoy plugin to quantify RNA localization patterns
+site_author: Florian MUELLER
+site_url: https://muellerflorian.github.io/locmembrane/
+
+# Repository
+repo_name: GitHub
+repo_url: https://github.com/muellerflorian/locmembrane.git
+edit_uri: ""
+
+# Copyright
+copyright: 'Copyright &copy; 2018 Florian MUELLER'
+
+# Configuration
+theme:
+  name: 'material'
+  #name: mkdocs
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  feature:
+    tabs: true
+  palette:
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: /img/icons8-eukaryotic-cells-filled-100.png
+  logo:
+    icon: wb_sunny
+
+# Customization
+extra:
+  social:
+    - type: github-alt
+      link: https://github.com/muellerflorian
+    - type: linkedin
+      link: https://www.linkedin.com/in/muellerflorian/
+    - type: google
+      link: https://scholar.google.fr/citations?user=WrEj9t4AAAAJ
+
+# MD extension
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.tasklist
+  - pymdownx.superfences
+  - pymdownx.tilde
+
+nav:
+    - Overview: index.md   # Needed for material theme but not for others
+    - Membrane enrichment:
+      - Overview: membraneEnrichment/memb-overview.md
+      - Analysis: membraneEnrichment/memb-plugin.md
+      - RNA detection: membraneEnrichment/memb-rna-detect.md
+      - To Do: membraneEnrichment/memb-todo.md
+    - About:
+      - Release Notes: about/release-notes.md
+      - Licence: about/licence.md
+
+
+#theme:
+#  name: 'material'
