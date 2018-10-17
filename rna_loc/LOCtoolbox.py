@@ -13,9 +13,9 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 import os
-import annotationImporter
-import maskGenerator
-import FQtoolbox
+from rna_loc import annotationImporter
+from rna_loc import maskGenerator
+from rna_loc import FQtoolbox
 import numpy as np
 import re
 from scipy import ndimage
@@ -39,26 +39,26 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     Function uses annotations generated in FIJI and creates mask based
     on the specified parameters. The resulting files are zipped and be
     used for training of a neural network with ImJoy.
-    
+
     Args:
-        
-        
+
+
         Zrange [tuple, 2 elements]. [Optional] Tuple specifying minimum and maximum z-value that is considered
-        in analysis. 
-        
-        bin_prop [Tuple, 3 elements]. Specifies the bins for the histograms (min, max,delta).  
-    
+        in analysis.
+
+        bin_prop [Tuple, 3 elements]. Specifies the bins for the histograms (min, max,delta).
+
     '''
     # Get input args. Has to be FIRST call!
     input_args = locals()
-    
+
     # Make sure input args are correct - assignments with 0 can come from ImJoy
     if Zrange[0] ==0 or Zrange[1] ==0:
         Zrange = None
-    
+
     if bin_prop[1] == 0 or bin_prop[1] == 0:
         bin_prop = (0,90,20)
-    
+
     ## Prepare folder to save results
     drive, path_and_file = os.path.splitdrive(FQ_file)
     path_results, file_results = os.path.split(path_and_file)
@@ -85,8 +85,8 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         print('average roi size:', annotDict['roi_size'])
 
         # Generate binary masks for a selected data-set
-        binaryGen = maskGenerator.BinaryMaskGenerator(erose_size=5, 
-                                                      obj_size_rem=500, 
+        binaryGen = maskGenerator.BinaryMaskGenerator(erose_size=5,
+                                                      obj_size_rem=500,
                                                       save_indiv=True)
 
         # The generate function uses as an input the sub-dictionary for one data-category and one channel
@@ -111,12 +111,12 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     hist_slice ={}
     print('Loop over slices')
     for k, v in annotatFiles.items():
-        
+
         print(f'Slice: {k}')
         # Get Z coordinate
         m = re.search('.*_Z([0-9]*)\.tif',k)
         Zmask = int(m.group(1))
-       
+
         # Check if outside of specified z range
         if Zrange is not None:
             if (Zmask <= Zrange[0]) or (Zmask >= Zrange[1]):
@@ -179,7 +179,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     hist_RNA_all_normPix = np.nan_to_num(hist_RNA_all_normPix)
 
     hist_plot_all = {'width':width,'center':center, 'bins':bins,
-                     'histRNA_all':histRNA_all,                     
+                     'histRNA_all':histRNA_all,
                      'histRNA_all_norm':histRNA_all_norm,
                      'histpix_all_norm':histpix_all_norm,
                      'hist_RNA_all_normPix':hist_RNA_all_normPix}
@@ -196,7 +196,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
                         'hist_slice': hist_slice}
 
     name_json = os.path.join(path_save, 'DataAll.json')
-    
+
     with open(name_json, 'w') as fp:
         json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=NumpyEncoder)
 
@@ -207,7 +207,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     csv_header  = ';'.join(hist_plot_all.keys())
     hist_values = np.array( list(hist_plot_all.values())).transpose()
     np.savetxt(name_csv, hist_values, delimiter=";",fmt='%f',header=csv_header,comments='')
-    
+
     return analysis_results
 
 
