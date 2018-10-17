@@ -17,6 +17,6 @@ setup(
           'read-roi',
           'scipy',
           'matplotlib',
-          'PIL',
+          'Pillow',
       ],
       zip_safe=False)
