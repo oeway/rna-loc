@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-      name='locmembrane',
+      name='rna_loc',
       version='0.1.0',
       description='Python code to analyze RNA localization data.',
-      url='https://github.com/muellerflorian/locmembrane',
+      url='https://github.com/muellerflorian/rna_loc',
       author='Florian MUELLER',
       author_email='muellerf.research@gmail.com',
       license='MIT',
