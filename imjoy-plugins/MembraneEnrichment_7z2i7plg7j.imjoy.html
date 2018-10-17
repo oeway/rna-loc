@@ -1,0 +1,243 @@
+﻿<docs lang="markdown">
+Plugin to analyze enrichment of RNAs relative to cellular membranes.
+</docs>
+
+<config lang="json">
+{
+  "name": "MembraneEnrichment",
+  "mode": "pyworker",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "Plugin to analyze enrichment of RNAs relative to cellular membranes.",
+  "tags": ["CellMemb","NuclearEnvelop","dev_CellMemb","dev_NuclearEnvelop"],
+  "ui": [{"dZ": {"id":"dZ", "type":"string", "placeholder":20}}],
+  "inputs": null,
+  "outputs": null,
+  "icon": "border_outer",
+  "env": {"CellMemb": "pip install git+https://github.com/muellerflorian/rna_loc.git  --upgrade",
+          "NuclearEnvelop": "pip install git+https://github.com/muellerflorian/rna_loc.git  --upgrade"},
+  "requirements": ["scikit-image", "read-roi", "nested-lookup"],
+  "dependencies": []
+}
+</config>
+
+<script lang="python">
+   
+import sys
+import os
+import asyncio
+import requests
+import shutil
+import base64
+import json
+import copy 
+
+# Development on local machine
+if 'dev' in api.TAG:
+    sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna_loc/')
+    from rna_loc import LOCtoolbox  
+
+# Install code. Dropbox or GitHub - this can be eventuall replaced by a GitHub based code distribution
+else:
+    print('Stable version')
+    pip install git+https://github.com/muellerflorian/rna_loc.git  --upgrade
+    #import rna_loc
+    #from rna_loc import LOCtoolbox
+
+
+
+    #url = 'https://www.dropbox.com/s/nbbif7inmpgznfn/src.zip?dl=1'
+    #r = requests.get(url, allow_redirects=True)
+
+    #name_zip = os.path.join('.','src.zip')
+    #open(name_zip, 'wb').write(r.content)
+    #shutil.unpack_archive(name_zip)
+    #os.remove(name_zip)
+    #sys.path.append(os.path.join('.','src'))
+
+
+class PythonPlugin():
+
+    # Function to initialize parameters (either default or from stored values)
+    async def setup(self):
+
+        print(' ')
+        print('== Membrane Enrichment Plugin: initialization')
+        print(f'Plugin is running with tag: {api.TAG}')
+
+        # Operation to specify root folder
+        api.register({
+            "name": "Root folder",
+            "ui": "Define root folder to load files.",
+            "run":self.config_root,
+        })
+
+        # Analysis root folder
+        self.load_root(await api.getConfig('root_folder'))
+
+        # Initialize default parameters: value and string for ui
+        self.parameters =  {"CellMemb":{'dZ': {'val':2,'txt':'dZ'},
+                            'Z_min': {'val':0,'txt':'Zmin [pix; 0 for all]'},
+                            'Z_max': {'val':0,'txt':'Zmax [pix; 0 for all]'},
+                            'cell_ident': {'val':'C3-','txt':'Channel [Cells]'},
+                            'hist_bin_size': {'val':20,'txt':'Hist [bin]'},
+                            'hist_max': {'val':100,'txt':'Hist [max]'},
+                            'img_size_x': {'val':960,'txt':'Img-size [X]'},
+                            'img_size_y': {'val':960,'txt':'Img-size [Y]'}}
+                        }
+
+        # Load stored parameters (if present) from earlier instance
+        self.load_config(await api.getConfig('membraneEnrich'))
+        self.update_ui()
+
+        api.showStatus('Membrane Enrichment Plugin: initialized')
+
+    # Run plugin
+    def run(self, my):
+
+        print(" == Save configuration ")
+        self.save_config(my)
+
+        api.showStatus('Membrane Enrichment Plugin: analysing data')
+        # This is performed depending on how the plugin is called
+        
+        # No file window opened 
+        if my.data.data is None:
+            self.define_file(my)
+        else:
+            self._config = my.config
+            api.getFilePath(my.data.data[0].href).then(self.analyze_enrichment)
+
+        api.showStatus('Membrane Enrichment Plugin: done')
+
+    ### Functions for actual analysis
+    def define_file(self,my):
+        self._config = my.config
+        api.showFileDialog(type="file",uri_type="path",root=self.root).then(self.analyze_enrichment).catch(print)
+
+
+    # Calculate membrane enrichment
+    def analyze_enrichment(self,file_open):
+
+        config = self._config
+        # All parameters to create annotations        
+        print(f" == Will process file {file_open}")
+
+        # Function call based on tag
+        if "CellMemb" in api.TAG:
+            
+            # Call function to create annotations
+            LOCtoolbox.process_file(FQ_file=file_open, 
+                                    img_size= (config.img_size_y,config.img_size_x),
+                                    bin_prop=(0,config.hist_max,config.hist_bin_size),
+                                    channels={'cells':config.cell_ident},
+                                    data_category={'roi':''},
+                                    annotation_extension='__RoiSet.zip',
+                                    img_extension='.tif',
+                                    show_plot=self.show_plot,
+                                    Zrange=(config.Z_min,config.Z_max),
+                                    dZ=config.dZ)
+
+    
+    # Show plot in ImJoy interface
+    def show_plot(self, plot_path):
+        with open(plot_path, 'rb') as f:
+            data = f.read()
+            result = base64.b64encode(data).decode('ascii')
+            imgurl = 'data:image/png;base64,' + result
+            api.createWindow(name='Membrane enrichment', type='imjoy/image', w=5, h=5, data= {"src": imgurl})
+
+
+    ### Update ui
+    def update_ui(self):     
+
+        if "CellMemb" in api.TAG:
+            task = "CellMemb"
+
+        ui = []
+        for param in self.parameters[task]:
+
+            value = self.parameters[task][param]['val']
+            txt   = self.parameters[task][param]['txt']
+
+            if param is not 'paths':
+
+                if isinstance(value,int):
+                    ui.append({txt: { "id": param, 
+                                        "type": "number",
+                                        "min": 0,
+                                        "placeholder":value}})
+
+                elif isinstance(value,str):
+                    ui.append({txt: { "id": param,
+                                        "type": "string",
+                                        "placeholder":value}})
+
+                elif isinstance(value,list):
+                    ui.append({txt: { "id": param,
+                                        "type": "choose",
+                                        "options": value,
+                                        "placeholder": value[0]}})
+                else:
+                    raise('unknown entry, expected str, list or int')
+
+        api.register({"name" : "MembraneEnrichment",
+                         "ui": ui})
+
+
+    ### Root folder for analysis 
+    
+    # Specify root folder
+    def config_root(self,my):
+        api.showFileDialog(uri_type="path",root='~').then(self.set_root).catch(print)
+
+    #Set root folder for analysis
+    def set_root(self,path):
+        api.showStatus(f'Root folder set to {path}')
+        self.root = path
+        api.setConfig('root_folder', path)
+
+    # Load root from browser memory
+    def load_root(self,root):
+        print(f'Found root directory {root}')
+        if root == "null" or not os.path.isdir(root):
+            self.root = '~'
+        else:
+            self.root = root
+
+    ### Functions to store, retrieve, and print configuration as saved in browser
+
+    # Saving updated configuration
+    def save_config(self,my):
+
+        if "CellMemb" in api.TAG:
+            task = "CellMemb"
+
+        for param in self.parameters[task]:
+            self.parameters[task][param]['val'] = getattr(my.config, param)
+        
+        # Dump into json string
+        api.setConfig('membraneEnrich', json.dumps(self.parameters))
+
+
+    # Print stored configuration
+    def print_config(self):
+        print(json.dumps(self.config, sort_keys=False, indent=2))
+
+    # Load config but only if all keys are the same
+    def load_config(self, parameters):
+
+        if parameters is None:
+            print('No previous parameters found in Imjoy')
+            return
+
+        # Get parameters from browser, check if keys are different and overwrite
+        parameters_loaded = json.loads(parameters) 
+        
+        if parameters_loaded.keys() == self.parameters.keys():
+            print('Loading updated paramater presets for MembraneEnrichment plugin')
+            self.parameters = copy.deepcopy(parameters_loaded)
+
+
+api.export(PythonPlugin())
+</script>
