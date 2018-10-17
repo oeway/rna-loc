@@ -14,9 +14,9 @@ setup(
           'numpy',
           'scikit-image',
           'nested_lookup',
-          'read-roi'
-          'scipy'
-          'matplotlib'
-          'PIL'
+          'read-roi',
+          'scipy',
+          'matplotlib',
+          'PIL',
       ],
       zip_safe=False)
