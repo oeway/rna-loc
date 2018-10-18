@@ -1,7 +1,6 @@
 # Measure RNA distance distribution to different membranes
 
-Goal is to quantify the distance distribution of RNAs to different membranes
-and summarize this distribution in a histogram.
+Goal is to quantify the distance distribution of RNAs to different membranes.
 
 ## Test date
 You can download already processed test data from [**Dropbox**](https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0). The zip archive contains data following the naming conventions of the examples below.
