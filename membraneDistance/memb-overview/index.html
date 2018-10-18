@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#measure-rna-distance-distribution-to-cellular-membranes" tabindex="1" class="md-skip">
+      <a href="../../#measure-rna-distance-distribution-to-different-membranes" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -223,8 +223,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" title="Membrane enrichment" class="md-tabs__link md-tabs__link--active">
-          Membrane enrichment
+        <a href="./" title="Membrane distance" class="md-tabs__link md-tabs__link--active">
+          Membrane distance
         </a>
       
     </li>
@@ -313,11 +313,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
-      Membrane enrichment
+      Membrane distance
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
-        Membrane enrichment
+        Membrane distance
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -533,19 +533,19 @@
               
                 
                 
-                <h1 id="measure-rna-distance-distribution-to-cellular-membranes">Measure RNA distance distribution to cellular membranes<a class="headerlink" href="#measure-rna-distance-distribution-to-cellular-membranes" title="Permanent link">&para;</a></h1>
-<p>Goal is to quantify the distance distribution of RNAs to a cellular membrane and
-summarize this distribution in a histogram.</p>
+                <h1 id="measure-rna-distance-distribution-to-different-membranes">Measure RNA distance distribution to different membranes<a class="headerlink" href="#measure-rna-distance-distribution-to-different-membranes" title="Permanent link">&para;</a></h1>
+<p>Goal is to quantify the distance distribution of RNAs to different membranes
+and summarize this distribution in a histogram.</p>
 <h2 id="test-date">Test date<a class="headerlink" href="#test-date" title="Permanent link">&para;</a></h2>
-<p>You can download already processed test data from <a href="https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0">Dropbox</a>. Contains data that follows
-the naming conventions as as examples below.</p>
+<p>You can download already processed test data from <a href="https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0"><strong>Dropbox</strong></a>. The zip archive contains data following the naming conventions of the examples below.</p>
 <h2 id="installing-the-imjoy-plugin">Installing the ImJoy plugin<a class="headerlink" href="#installing-the-imjoy-plugin" title="Permanent link">&para;</a></h2>
 <p>To install the analysis plugin for one of the specified analysis, press on the
 corresponding link</p>
 <ul>
 <li><a href="https://imjoy.io/#/app?w=MembDist&amp;plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&amp;tag=CellMemb"><strong>Cell membrane enrichment</strong></a></li>
 </ul>
-<p>This will open a dialog box where you can install the plugin.</p>
+<p>This will open a dialog box where you can install the plugin by pressing the <code>install</code> button. For more information for how to install and use the pluging engine, please
+consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
 <p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img></p>
 <h2 id="analysis-details">Analysis details<a class="headerlink" href="#analysis-details" title="Permanent link">&para;</a></h2>
 <p>For each RNA, we determine the closest distance of an RNA to the membrane. One thing to keep in mind more pixel close to the membrane than far away, e.g. in the center of
