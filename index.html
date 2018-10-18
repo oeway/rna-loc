@@ -13,7 +13,7 @@
         <meta name="description" content="An ImJoy plugin to quantify RNA localization patterns">
       
       
-        <link rel="canonical" href="https://muellerflorian.github.io/locmembrane/">
+        <link rel="canonical" href="https://muellerflorian.github.io/rna_loc/">
       
       
         <meta name="author" content="Florian MUELLER">
@@ -113,7 +113,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://muellerflorian.github.io/locmembrane/" title="RNA localizer" class="md-header-nav__button md-logo">
+        <a href="https://muellerflorian.github.io/rna_loc/" title="RNA localizer" class="md-header-nav__button md-logo">
           
             <i class="md-icon">wb_sunny</i>
           
@@ -175,7 +175,7 @@
   
 
 
-  <a href="https://github.com/muellerflorian/locmembrane.git" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/muellerflorian/rna_loc.git" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -255,7 +255,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://muellerflorian.github.io/locmembrane/" title="RNA localizer" class="md-nav__button md-logo">
+    <a href="https://muellerflorian.github.io/rna_loc/" title="RNA localizer" class="md-nav__button md-logo">
       
         <i class="md-icon">wb_sunny</i>
       
@@ -270,7 +270,7 @@
   
 
 
-  <a href="https://github.com/muellerflorian/locmembrane.git" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/muellerflorian/rna_loc.git" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -320,16 +320,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-start" title="Quick start" class="md-nav__link">
-    Quick start
+  <a href="#getting-started" title="Getting started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imjoy-install-the-plugin-engine" title="ImJoy: install the Plugin Engine" class="md-nav__link">
+    ImJoy: install the Plugin Engine
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#imjoy-and-plugins" title="ImJoy and plugins" class="md-nav__link">
-    ImJoy and plugins
+        
+          <li class="md-nav__item">
+  <a href="#imjoy-install-plugins" title="ImJoy: install plugins" class="md-nav__link">
+    ImJoy: install plugins
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -485,16 +498,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-start" title="Quick start" class="md-nav__link">
-    Quick start
+  <a href="#getting-started" title="Getting started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imjoy-install-the-plugin-engine" title="ImJoy: install the Plugin Engine" class="md-nav__link">
+    ImJoy: install the Plugin Engine
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#imjoy-and-plugins" title="ImJoy and plugins" class="md-nav__link">
-    ImJoy and plugins
+        
+          <li class="md-nav__item">
+  <a href="#imjoy-install-plugins" title="ImJoy: install plugins" class="md-nav__link">
+    ImJoy: install plugins
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -519,23 +545,19 @@
 <p>This is a collection of analysis tools to study RNA localization from smFISH images.
 We use a number of different open-source software packages, and detail their usage in this documentation.</p>
 <p><a href="https://imjoy.io"><strong>ImJoy</strong></a> is image processing platform with an easy to use interface powered by a Python engine running in the background.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/locmembrane/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
 <p><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a> is a Matlab toolbox to localize RNAs in 3D from smFISH images.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/locmembrane/master/docs/img/fq-screenshot.png" width="600px"></img></p>
-<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<p>Choose the desired analysis (listed in the banner)and follow the provided
-instructions for how to install the ImJoy plugin or use the Python source code.</p>
-<h2 id="imjoy-and-plugins">ImJoy and plugins<a class="headerlink" href="#imjoy-and-plugins" title="Permanent link">&para;</a></h2>
-<p>We provide specific links to install the ImJoy plugins in dedicated workspaces.
-If you press such a link for the first time, you will</p>
-<ol>
-<li>The ImJoy web app will open and ask you to install the specified plugin. Press
-on the <code>install</code> button. This will </li>
-</ol>
-<p>src="https://raw.githubusercontent.com/muellerflorian/locmembrane/master/docs/img/install_plugin.png" width="600px"&gt;</img></p>
-<ol>
-<li>.</li>
-</ol>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/fq-screenshot.png" width="600px"></img></p>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="imjoy-install-the-plugin-engine">ImJoy: install the Plugin Engine<a class="headerlink" href="#imjoy-install-the-plugin-engine" title="Permanent link">&para;</a></h3>
+<p>To run the ImJoy plugins, you will also need the <strong>Plugin Engine</strong>. It allows to
+perform analysis in Python. You will need to install it only once, it will then
+automatically check for updates each time you launch it. We provid the <a href="https://github.com/oeway/ImJoy-Python/releases"><strong>Plugin Engine for different operating systems</strong></a></p>
+<h3 id="imjoy-install-plugins">ImJoy: install plugins<a class="headerlink" href="#imjoy-install-plugins" title="Permanent link">&para;</a></h3>
+<p>We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces.
+If you press such a link the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.
+<img
+  src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/install_plugin.png" width="600px"></img></p>
                 
                   
                 
