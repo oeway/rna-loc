@@ -16,7 +16,7 @@ We use a number of different open-source software packages, and detail their usa
 ### ImJoy: install the Plugin Engine
 To run the ImJoy plugins, you will also need the **Plugin Engine**. It allows to
 perform analysis in Python. You will need to install it only once, it will then
-automatically check for updates each time you launch it. We provid the [**Plugin Engine for different operating systems**](https://github.com/oeway/ImJoy-Python/releases)
+automatically check for updates each time you launch it. We provid the [**Plugin Engine for different operating systems**](https://github.com/oeway/ImJoy-Python/releases).
 
 
 ### ImJoy: install plugins

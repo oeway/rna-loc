@@ -14,15 +14,18 @@ Plugin to analyze enrichment of RNAs relative to cellular membranes.
   "inputs": null,
   "outputs": null,
   "icon": "border_outer",
-  "env": {"CellMemb": ["conda create -n rna_loc", "pip install git+https://github.com/muellerflorian/rna_loc.git --upgrade"],
-          "NuclearEnvelop": ["conda create -n rna_loc","pip install git+https://github.com/muellerflorian/rna_loc.git --upgrade"},
-  "requirements": ["scikit-image", "read-roi", "nested-lookup"],
+  "env": {"CellMemb": "conda create -n rna_loc python=3.6",
+          "NuclearEnvelop": "conda create -n rna_loc python=3.6"},
+  "requirements": { "CellMemb":["git+https://github.com/muellerflorian/rna_loc.git","scikit-image", "read-roi", "nested-lookup"],
+                    "NuclearEnvelop":["git+https://github.com/muellerflorian/rna_loc.git","scikit-image", "read-roi", "nested-lookup"],
+                    "CellMemb_dev": ["scikit-image", "read-roi", "nested-lookup"],
+                    "NuclearEnvelop_dev": ["scikit-image", "read-roi", "nested-lookup"]},
   "dependencies": []
 }
 </config>
 
 <script lang="python">
-
+   
 import sys
 import os
 import asyncio
@@ -30,20 +33,17 @@ import requests
 import shutil
 import base64
 import json
-import copy
+import copy 
 
 # Development on local machine
 if 'dev' in api.TAG:
     sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna_loc/')
-    from rna_loc import LOCtoolbox
+    from rna_loc import LOCtoolbox  
 
 # Install code. Dropbox or GitHub - this can be eventuall replaced by a GitHub based code distribution
 else:
     print('Stable version')
-    import rna_loc.LOCtoolbox
-    #from rna_loc import LOCtoolbox
-
-
+    from rna_loc import LOCtoolbox
 
     #url = 'https://www.dropbox.com/s/nbbif7inmpgznfn/src.zip?dl=1'
     #r = requests.get(url, allow_redirects=True)
@@ -99,8 +99,8 @@ class PythonPlugin():
 
         api.showStatus('Membrane Enrichment Plugin: analysing data')
         # This is performed depending on how the plugin is called
-
-        # No file window opened
+        
+        # No file window opened 
         if my.data.data is None:
             self.define_file(my)
         else:
@@ -119,14 +119,14 @@ class PythonPlugin():
     def analyze_enrichment(self,file_open):
 
         config = self._config
-        # All parameters to create annotations
+        # All parameters to create annotations        
         print(f" == Will process file {file_open}")
 
         # Function call based on tag
         if "CellMemb" in api.TAG:
-
+            
             # Call function to create annotations
-            LOCtoolbox.process_file(FQ_file=file_open,
+            LOCtoolbox.process_file(FQ_file=file_open, 
                                     img_size= (config.img_size_y,config.img_size_x),
                                     bin_prop=(0,config.hist_max,config.hist_bin_size),
                                     channels={'cells':config.cell_ident},
@@ -137,7 +137,7 @@ class PythonPlugin():
                                     Zrange=(config.Z_min,config.Z_max),
                                     dZ=config.dZ)
 
-
+    
     # Show plot in ImJoy interface
     def show_plot(self, plot_path):
         with open(plot_path, 'rb') as f:
@@ -148,7 +148,7 @@ class PythonPlugin():
 
 
     ### Update ui
-    def update_ui(self):
+    def update_ui(self):     
 
         if "CellMemb" in api.TAG:
             task = "CellMemb"
@@ -162,7 +162,7 @@ class PythonPlugin():
             if param is not 'paths':
 
                 if isinstance(value,int):
-                    ui.append({txt: { "id": param,
+                    ui.append({txt: { "id": param, 
                                         "type": "number",
                                         "min": 0,
                                         "placeholder":value}})
@@ -184,8 +184,8 @@ class PythonPlugin():
                          "ui": ui})
 
 
-    ### Root folder for analysis
-
+    ### Root folder for analysis 
+    
     # Specify root folder
     def config_root(self,my):
         api.showFileDialog(uri_type="path",root='~').then(self.set_root).catch(print)
@@ -214,7 +214,7 @@ class PythonPlugin():
 
         for param in self.parameters[task]:
             self.parameters[task][param]['val'] = getattr(my.config, param)
-
+        
         # Dump into json string
         api.setConfig('membraneEnrich', json.dumps(self.parameters))
 
@@ -231,8 +231,8 @@ class PythonPlugin():
             return
 
         # Get parameters from browser, check if keys are different and overwrite
-        parameters_loaded = json.loads(parameters)
-
+        parameters_loaded = json.loads(parameters) 
+        
         if parameters_loaded.keys() == self.parameters.keys():
             print('Loading updated paramater presets for MembraneEnrichment plugin')
             self.parameters = copy.deepcopy(parameters_loaded)
