@@ -61,10 +61,10 @@ markdown_extensions:
 nav:
     - Overview: index.md   # Needed for material theme but not for others
     - Membrane enrichment:
-      - Overview: membraneEnrichment/memb-overview.md
-      - Analysis: membraneEnrichment/memb-analysis.md
-      - RNA detection: membraneEnrichment/memb-rna-detect.md
-      - To Do: membraneEnrichment/memb-todo.md
+      - Overview: membraneDistance/memb-overview.md
+      - Analysis: membraneDistance/memb-analysis.md
+      - RNA detection: membraneDistance/memb-rna-detect.md
+      - To Do: membraneDistance/memb-todo.md
     - About:
       - Release Notes: about/release-notes.md
       - Licence: about/licence.md

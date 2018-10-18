@@ -42,7 +42,7 @@ with the connection token. This token (blacked out) is needed for the ImJoy app 
   src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-connectionToken" width="600px"></img>
 
 In the ImJoy interface press the 🚀 symbol to connect it to the Plugin Engine. This
-will open an interface where you can specify token in the `Connection token` field. Please note, that the token will be saved and you will not need to enter it anymore to connect to this Plugin Engine.
+will open an dialog where you can specify the token in the `Connection token` field. Please note, that the token will be saved and you will not need to enter it anymore to connect to this Plugin Engine.
 
 <img
   src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-engine" width="600px"></img>

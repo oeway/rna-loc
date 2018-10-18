@@ -16,6 +16,10 @@ corresponding link
 -   [**Cell membrane enrichment**](
 https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&tag=CellMemb)
 
+This will open a dialog box where you can install the plugin.
+
+<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img>
+
 ## Analysis details
 For each RNA, we determine the closest distance of an RNA to the membrane. One thing to keep in mind more pixel close to the membrane than far away, e.g. in the center of
 the cell. A simple example is a circle. The maximum distance that you can be away from the “membrane” is the radius of the circle. However, there is only one possibility to be that far away (in the center). However, there are many more “close” positions.  Plotting a histogram of the distance to the membrane for all possible positions in the circle,  will yield a distribtion that strongly enriched for small distances.
