@@ -90,7 +90,7 @@ The entire functinality of the plugin can be controlled within the plugin
 window. If you expand the plugin, you will see all parameters and operations
 that can be performed
 
-<img src="https://raw.githubusercontent.com/muellerflorian/locmembrane/master/docs/img/ui_CellCortex.png" width="350px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/ui_CellCortex.png" width="350px"></img>
 
 All options are explained in the Table below. If you change these parameters, the
 changed values will be saved in the browser and reused the next time you launch

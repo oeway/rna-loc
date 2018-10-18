@@ -62,7 +62,7 @@ nav:
     - Overview: index.md   # Needed for material theme but not for others
     - Membrane enrichment:
       - Overview: membraneEnrichment/memb-overview.md
-      - Analysis: membraneEnrichment/memb-plugin.md
+      - Analysis: membraneEnrichment/memb-analysis.md
       - RNA detection: membraneEnrichment/memb-rna-detect.md
       - To Do: membraneEnrichment/memb-todo.md
     - About:
