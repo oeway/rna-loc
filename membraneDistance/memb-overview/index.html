@@ -355,15 +355,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#test-date" title="Test date" class="md-nav__link">
-    Test date
+  <a href="#installing-the-imjoy-plugin" title="Installing the ImJoy plugin" class="md-nav__link">
+    Installing the ImJoy plugin
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-the-imjoy-plugin" title="Installing the ImJoy plugin" class="md-nav__link">
-    Installing the ImJoy plugin
+  <a href="#test-date" title="Test date" class="md-nav__link">
+    Test date
   </a>
   
 </li>
@@ -496,15 +496,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#test-date" title="Test date" class="md-nav__link">
-    Test date
+  <a href="#installing-the-imjoy-plugin" title="Installing the ImJoy plugin" class="md-nav__link">
+    Installing the ImJoy plugin
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-the-imjoy-plugin" title="Installing the ImJoy plugin" class="md-nav__link">
-    Installing the ImJoy plugin
+  <a href="#test-date" title="Test date" class="md-nav__link">
+    Test date
   </a>
   
 </li>
@@ -534,25 +534,31 @@
                 
                 
                 <h1 id="measure-rna-distance-distribution-to-different-membranes">Measure RNA distance distribution to different membranes<a class="headerlink" href="#measure-rna-distance-distribution-to-different-membranes" title="Permanent link">&para;</a></h1>
-<p>Goal is to quantify the distance distribution of RNAs to different membranes.</p>
-<h2 id="test-date">Test date<a class="headerlink" href="#test-date" title="Permanent link">&para;</a></h2>
-<p>You can download already processed test data from <a href="https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0"><strong>Dropbox</strong></a>. The zip archive contains data following the naming conventions of the examples below.</p>
+<p>Goal is to quantify the distance distribution of RNAs to different membranes.
+This analysis requires</p>
+<ul>
+<li><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a></li>
+<li>[<strong>ImJoy</strong>] with the <a href="memb-overview/#installing-the-imjoy-plugin">provided plugin</a></li>
+</ul>
 <h2 id="installing-the-imjoy-plugin">Installing the ImJoy plugin<a class="headerlink" href="#installing-the-imjoy-plugin" title="Permanent link">&para;</a></h2>
 <p>To install the analysis plugin for one of the specified analysis, press on the
 corresponding link</p>
 <ul>
 <li><a href="https://imjoy.io/#/app?w=MembDist&amp;plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&amp;tag=CellMemb"><strong>Cell membrane enrichment</strong></a></li>
 </ul>
-<p>This will open a dialog box where you can install the plugin by pressing the <code>install</code> button. For more information for how to install and use the pluging engine, please
+<p>This will open a dialog box where you can install the plugin by pressing the
+<code>install</code> button. For more information for how to install and use the pluging engine, please
 consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
 <p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img></p>
+<h2 id="test-date">Test date<a class="headerlink" href="#test-date" title="Permanent link">&para;</a></h2>
+<p>You can download already processed test data from <a href="https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0"><strong>Dropbox</strong></a>. The zip archive contains data following the naming conventions of the examples below.</p>
 <h2 id="analysis-details">Analysis details<a class="headerlink" href="#analysis-details" title="Permanent link">&para;</a></h2>
 <p>For each RNA, we determine the closest distance of an RNA to the membrane. One thing to keep in mind more pixel close to the membrane than far away, e.g. in the center of
 the cell. A simple example is a circle. The maximum distance that you can be away from the “membrane” is the radius of the circle. However, there is only one possibility to be that far away (in the center). However, there are many more “close” positions.  Plotting a histogram of the distance to the membrane for all possible positions in the circle,  will yield a distribtion that strongly enriched for small distances.</p>
 <p>To normalized for this effect, we calculate all possible distance from the membrane
 for a given cell with a <strong>distance transformation</strong>. This tranformation results in
 an image, where the pixel values are not fluorescence intensities but distance values. An example is shown below. The blue lines are the cell outlines. The green dots are the detected RNAs. The image is the distance transform. The intensity values are distance to the membrane in pixels.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/dist_transform.png" width="600px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/dist_transform.png" width="400px"></img></p>
 <p>We measure for all RNAs the distance to the membrane and calculate a
 histgram. We report the</p>
 <ul>
