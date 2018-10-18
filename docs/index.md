@@ -23,7 +23,7 @@ Most plugins require the **ImJoy Plugin Engine**, to perform computations in
 Python. You will need to **install** it only once, but **launch** it each time
 you work with ImJoy. For more information for how to install and use the pluging engine, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
 
-## FISH-quant: RNA detection in 3D
+## FISH-quant: RNA detection
 
 [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/) is a Matlab toolbox to localize RNAs in 3D from smFISH images. FISH-quant is often used to perform the RNA
 detection. Eventually, we would like to implement the main FISH-quant features in ImJoy.
