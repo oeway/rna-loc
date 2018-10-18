@@ -5,10 +5,4 @@
     * [ ] ImJoy plugin for nuclear envelope enrichment
     * [ ] Automated segmentation with Deep Learning
     * [ ] ImJoy plugin (op) to split z-stack in individual images
-        more text
-        + [x] item a
-        + [ ] item b
-        + [x] item c
-    * [X] item C
-- [ ] item 2
-- [ ] item 3
+    * [ ] Adjust GMM Matlab code to be compatible with ImJoy Plugin.

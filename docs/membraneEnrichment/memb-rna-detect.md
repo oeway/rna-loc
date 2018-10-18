@@ -1,11 +1,9 @@
 # RNA detection in smFISH images
 
 Two options exist, you can either directly analyze the smFISH channels in FQ to
-detect individual RNAs, or you can use a Matlab script that detect individual RNA
+detect individual RNAs, ~~or you can use a Matlab script that detect individual RNA
 molecule but also decomposes RNA aggregates into individual RNAs with a Gaussian
-Mixture Model (GMM).
-
-**TODOO** - adjust GMM scripts for workflow .
+Mixture Model (GMM)~~.
 
 ## Detection of individual RNAs
 
@@ -54,19 +52,13 @@ the [FQ manual](<>).
 13. If you are satisfied with these detection results, you can save them directly:  `[FQ] Main`>`Save`>`Save ???`
 14. If you would like to also analyze RNA aggregates, you can save only the outline: `[FQ] Main`>`Save`>`Save ???`
 
-## Detection of clustered RNAs **TODO**
+## ~~Detection of clustered RNAs~~ **TODO**
 
-**NOT-COMPATIBLE-YET**
-After performing the steps above you will have two text files (1) the cell outline,
+~~After performing the steps above you will have two text files (1) the cell outline,
 (2) FQ detection settings. We provide a Matlab script `WRAPPER_analyze_smFISH__EXP_v1.m`
 which detects individual RNAs and then decomposes aggregates into individual RNAs
 (for more information see our [Nat Communications paper](ToBeAdded)). This
-script allows batch-processing and multiple images can be analyzed together, where image is
- processed with its dedicated outline and settings. This can be done with the
- Matlab script. This script recursively searches a user-defined parental folder
- for folders containing FQ outline and settings files. These folders will then
- be processed and RNA detection performed, sub-folders will containing different
- analysis results will be created.
+script allows batch-processing and multiple images can be analyzed together, where image is processed with its dedicated outline and settings. This can be done with the Matlab script. This script recursively searches a user-defined parental folder for folders containing FQ outline and settings files. These folders will then be processed and RNA detection performed, sub-folders will containing different analysis results will be created.~~
 
 -   `results_GMM` contains the RNA detection with the GMM (to decompose foci into
     individual RNAs). The most important files are the text files ending
@@ -79,4 +71,4 @@ script allows batch-processing and multiple images can be analyzed together, whe
 
 **Note**. The script also computes localization features that are not necessary
 for this analysis. To avoid this computation you can specify the line where
-the parameters for this analysis are set to
+the parameters for this analysis are set toS
