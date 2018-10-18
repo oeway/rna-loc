@@ -328,15 +328,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#imjoy-install-the-plugin-engine" title="ImJoy: install the Plugin Engine" class="md-nav__link">
-    ImJoy: install the Plugin Engine
+  <a href="#working-with-imjoy" title="Working with ImJoy" class="md-nav__link">
+    Working with ImJoy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-plugins" title="Installing plugins" class="md-nav__link">
+    Installing plugins
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#imjoy-install-plugins" title="ImJoy: install plugins" class="md-nav__link">
-    ImJoy: install plugins
+  <a href="#imjoy-installing-and-launching-the-plugin-engine" title="ImJoy: installing and launching the Plugin Engine" class="md-nav__link">
+    ImJoy: installing and launching the Plugin Engine
   </a>
   
 </li>
@@ -506,15 +519,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#imjoy-install-the-plugin-engine" title="ImJoy: install the Plugin Engine" class="md-nav__link">
-    ImJoy: install the Plugin Engine
+  <a href="#working-with-imjoy" title="Working with ImJoy" class="md-nav__link">
+    Working with ImJoy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-plugins" title="Installing plugins" class="md-nav__link">
+    Installing plugins
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#imjoy-install-plugins" title="ImJoy: install plugins" class="md-nav__link">
-    ImJoy: install plugins
+  <a href="#imjoy-installing-and-launching-the-plugin-engine" title="ImJoy: installing and launching the Plugin Engine" class="md-nav__link">
+    ImJoy: installing and launching the Plugin Engine
   </a>
   
 </li>
@@ -549,15 +575,32 @@ We use a number of different open-source software packages, and detail their usa
 <p><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a> is a Matlab toolbox to localize RNAs in 3D from smFISH images.</p>
 <p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/fq-screenshot.png" width="600px"></img></p>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<h3 id="imjoy-install-the-plugin-engine">ImJoy: install the Plugin Engine<a class="headerlink" href="#imjoy-install-the-plugin-engine" title="Permanent link">&para;</a></h3>
-<p>To run the ImJoy plugins, you will also need the <strong>Plugin Engine</strong>. It allows to
-perform analysis in Python. You will need to install it only once, it will then
-automatically check for updates each time you launch it. We provid the <a href="https://github.com/oeway/ImJoy-Python/releases"><strong>Plugin Engine for different operating systems</strong></a></p>
-<h3 id="imjoy-install-plugins">ImJoy: install plugins<a class="headerlink" href="#imjoy-install-plugins" title="Permanent link">&para;</a></h3>
-<p>We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces.
-If you press such a link the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.
+<p>We provide different analysis workflows (you can select them also from the banners).
+For each we specify the requirements and the required installations.</p>
+<ul>
+<li><a href="membraneEnrichment/memb-overview/">Analysis RNA distance distribution to cellular membranes</a></li>
+</ul>
+<h3 id="working-with-imjoy">Working with ImJoy<a class="headerlink" href="#working-with-imjoy" title="Permanent link">&para;</a></h3>
+<p>Most workflows depend on ImJoy plugins. ImJoy is an easy to use <a href="https://imjoy.io/docs/#/overview">image processing framework</a>.</p>
+<p>We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces. Once installed, ImJoy remembers the workspaces and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
+<h4 id="installing-plugins">Installing plugins<a class="headerlink" href="#installing-plugins" title="Permanent link">&para;</a></h4>
+<p>If you press on the installation link, the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.
 <img
   src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/install_plugin.png" width="600px"></img></p>
+<p>Most plugins require the <strong>ImJoy Plugin Engine</strong>, to perform computations in
+Python. You will need to <strong>install</strong> it only once, but <strong>launch</strong> it each time
+you work with ImJoy.</p>
+<h3 id="imjoy-installing-and-launching-the-plugin-engine">ImJoy: installing and launching the Plugin Engine<a class="headerlink" href="#imjoy-installing-and-launching-the-plugin-engine" title="Permanent link">&para;</a></h3>
+<p>We provide the Plugin Engine for different operating systems <a href="https://github.com/oeway/ImJoy-Python/releases"><strong>here</strong></a>. Select the appropirate
+one and follow the instructions.</p>
+<p>When you <strong>launch the Plugin Engine</strong> for the first time it will show a webpage
+with the connection token. This token (blacked out) is needed for the ImJoy app to be able to communicate with the Plugin Engine.</p>
+<p><img
+  src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-connectionToken" width="600px"></img></p>
+<p>In the ImJoy interface press the 🚀 symbol to connect it to the Plugin Engine. This
+will open an interface where you can specify token in the <code>Connection token</code> field. Please note, that the token will be saved and you will not need to enter it anymore to connect to this Plugin Engine.</p>
+<p><img
+  src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-engine" width="600px"></img></p>
                 
                   
                 

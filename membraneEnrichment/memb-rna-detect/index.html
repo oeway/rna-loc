@@ -521,10 +521,9 @@
                 
                 <h1 id="rna-detection-in-smfish-images">RNA detection in smFISH images<a class="headerlink" href="#rna-detection-in-smfish-images" title="Permanent link">&para;</a></h1>
 <p>Two options exist, you can either directly analyze the smFISH channels in FQ to
-detect individual RNAs, or you can use a Matlab script that detect individual RNA
+detect individual RNAs, <del>or you can use a Matlab script that detect individual RNA
 molecule but also decomposes RNA aggregates into individual RNAs with a Gaussian
-Mixture Model (GMM).</p>
-<p><strong>TODOO</strong> - adjust GMM scripts for workflow .</p>
+Mixture Model (GMM)</del>.</p>
 <h2 id="detection-of-individual-rnas">Detection of individual RNAs<a class="headerlink" href="#detection-of-individual-rnas" title="Permanent link">&para;</a></h2>
 <p>Below only a quick summary of the workflow is presented. For more details consult
 the <a href="">FQ manual</a>.</p>
@@ -576,18 +575,12 @@ the <a href="">FQ manual</a>.</p>
 <li>If you are satisfied with these detection results, you can save them directly:  <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Save ???</code></li>
 <li>If you would like to also analyze RNA aggregates, you can save only the outline: <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Save ???</code></li>
 </ol>
-<h2 id="detection-of-clustered-rnas-todo">Detection of clustered RNAs <strong>TODO</strong><a class="headerlink" href="#detection-of-clustered-rnas-todo" title="Permanent link">&para;</a></h2>
-<p><strong>NOT-COMPATIBLE-YET</strong>
-After performing the steps above you will have two text files (1) the cell outline,
+<h2 id="detection-of-clustered-rnas-todo"><del>Detection of clustered RNAs</del> <strong>TODO</strong><a class="headerlink" href="#detection-of-clustered-rnas-todo" title="Permanent link">&para;</a></h2>
+<p><del>After performing the steps above you will have two text files (1) the cell outline,
 (2) FQ detection settings. We provide a Matlab script <code>WRAPPER_analyze_smFISH__EXP_v1.m</code>
 which detects individual RNAs and then decomposes aggregates into individual RNAs
 (for more information see our <a href="ToBeAdded">Nat Communications paper</a>). This
-script allows batch-processing and multiple images can be analyzed together, where image is
- processed with its dedicated outline and settings. This can be done with the
- Matlab script. This script recursively searches a user-defined parental folder
- for folders containing FQ outline and settings files. These folders will then
- be processed and RNA detection performed, sub-folders will containing different
- analysis results will be created.</p>
+script allows batch-processing and multiple images can be analyzed together, where image is processed with its dedicated outline and settings. This can be done with the Matlab script. This script recursively searches a user-defined parental folder for folders containing FQ outline and settings files. These folders will then be processed and RNA detection performed, sub-folders will containing different analysis results will be created.</del></p>
 <ul>
 <li><code>results_GMM</code> contains the RNA detection with the GMM (to decompose foci into
     individual RNAs). The most important files are the text files ending
@@ -600,7 +593,7 @@ script allows batch-processing and multiple images can be analyzed together, whe
 </ul>
 <p><strong>Note</strong>. The script also computes localization features that are not necessary
 for this analysis. To avoid this computation you can specify the line where
-the parameters for this analysis are set to</p>
+the parameters for this analysis are set toS</p>
                 
                   
                 
