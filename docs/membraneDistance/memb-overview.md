@@ -1,12 +1,10 @@
-# Measure RNA distance distribution to cellular membranes
+# Measure RNA distance distribution to different membranes
 
-Goal is to quantify the distance distribution of RNAs to a cellular membrane and
-summarize this distribution in a histogram.
+Goal is to quantify the distance distribution of RNAs to different membranes
+and summarize this distribution in a histogram.
 
 ## Test date
-You can download already processed test data from [Dropbox](https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0). Contains data that follows
-the naming conventions as as examples below.
-
+You can download already processed test data from [**Dropbox**](https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0). The zip archive contains data following the naming conventions of the examples below.
 
 ## Installing the ImJoy plugin
 
@@ -16,7 +14,8 @@ corresponding link
 -   [**Cell membrane enrichment**](
 https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&tag=CellMemb)
 
-This will open a dialog box where you can install the plugin.
+This will open a dialog box where you can install the plugin by pressing the `install` button. For more information for how to install and use the pluging engine, please
+consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
 
 <img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img>
 

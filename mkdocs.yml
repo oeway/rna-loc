@@ -60,7 +60,7 @@ markdown_extensions:
 
 nav:
     - Overview: index.md   # Needed for material theme but not for others
-    - Membrane enrichment:
+    - Membrane distance:
       - Overview: membraneDistance/memb-overview.md
       - Analysis: membraneDistance/memb-analysis.md
       - RNA detection: membraneDistance/memb-rna-detect.md

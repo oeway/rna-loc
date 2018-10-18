@@ -29,20 +29,4 @@ If you press on the installation link, the ImJoy web app will open and display a
 
 Most plugins require the **ImJoy Plugin Engine**, to perform computations in
 Python. You will need to **install** it only once, but **launch** it each time
-you work with ImJoy.
-
-### ImJoy: installing and launching the Plugin Engine
-We provide the Plugin Engine for different operating systems [**here**](https://github.com/oeway/ImJoy-Python/releases). Select the appropirate
-one and follow the instructions.
-
-When you **launch the Plugin Engine** for the first time it will show a webpage
-with the connection token. This token (blacked out) is needed for the ImJoy app to be able to communicate with the Plugin Engine.
-
-<img
-  src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-connectionToken" width="600px"></img>
-
-In the ImJoy interface press the 🚀 symbol to connect it to the Plugin Engine. This
-will open an dialog where you can specify the token in the `Connection token` field. Please note, that the token will be saved and you will not need to enter it anymore to connect to this Plugin Engine.
-
-<img
-  src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-engine" width="600px"></img>
+you work with ImJoy. For more information for how to install and use the pluging engine, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
