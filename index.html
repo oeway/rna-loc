@@ -320,8 +320,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting started" class="md-nav__link">
-    Getting started
+  <a href="#imjoy" title="ImJoy" class="md-nav__link">
+    ImJoy
   </a>
   
     <nav class="md-nav">
@@ -332,23 +332,17 @@
     Working with ImJoy
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
+</li>
         
-          <li class="md-nav__item">
-  <a href="#installing-plugins" title="Installing plugins" class="md-nav__link">
-    Installing plugins
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fish-quant-rna-detection-in-3d" title="FISH-quant: RNA detection in 3D" class="md-nav__link">
+    FISH-quant: RNA detection in 3D
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -504,8 +498,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting started" class="md-nav__link">
-    Getting started
+  <a href="#imjoy" title="ImJoy" class="md-nav__link">
+    ImJoy
   </a>
   
     <nav class="md-nav">
@@ -516,23 +510,17 @@
     Working with ImJoy
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
+</li>
         
-          <li class="md-nav__item">
-  <a href="#installing-plugins" title="Installing plugins" class="md-nav__link">
-    Installing plugins
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fish-quant-rna-detection-in-3d" title="FISH-quant: RNA detection in 3D" class="md-nav__link">
+    FISH-quant: RNA detection in 3D
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -555,27 +543,25 @@
                 
                 <h1 id="rna-localization-in-smfish-images">RNA localization in smFISH images<a class="headerlink" href="#rna-localization-in-smfish-images" title="Permanent link">&para;</a></h1>
 <p>This is a collection of analysis tools to study RNA localization from smFISH images.
-We use a number of different open-source software packages, and detail their usage in this documentation.</p>
-<p><a href="https://imjoy.io"><strong>ImJoy</strong></a> is image processing platform with an easy to use interface powered by a Python engine running in the background.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
-<p><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a> is a Matlab toolbox to localize RNAs in 3D from smFISH images.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/fq-screenshot.png" width="600px"></img></p>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>We provide different analysis workflows (you can select them also from the banners).
-For each we specify the requirements and the required installations.</p>
+ We provide different analysis workflows (you can select them also from the banners). For each we specify the requirements and the required installations. We use a number of different open-source software packages, and detail their usage in this documentation.</p>
 <ul>
-<li><a href="membraneDistance/memb-overview/">Analysis RNA distance distribution to cellular membranes</a></li>
+<li><a href="membraneDistance/memb-overview/"><strong>Calculate RNA distance distributions to membranes</strong></a></li>
 </ul>
+<h2 id="imjoy">ImJoy<a class="headerlink" href="#imjoy" title="Permanent link">&para;</a></h2>
+<p><a href="https://imjoy.io/docs/#/"><strong>ImJoy</strong></a> is image processing platform with an easy to use interface powered by a Python engine running in the background. ImJoy plays a central role in most analysis workflows.</p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
 <h3 id="working-with-imjoy">Working with ImJoy<a class="headerlink" href="#working-with-imjoy" title="Permanent link">&para;</a></h3>
-<p>Most workflows depend on ImJoy plugins. ImJoy is an easy to use <a href="https://imjoy.io/docs/#/overview">image processing framework</a>.</p>
 <p>We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces. Once installed, ImJoy remembers the workspaces and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
-<h4 id="installing-plugins">Installing plugins<a class="headerlink" href="#installing-plugins" title="Permanent link">&para;</a></h4>
 <p>If you press on the installation link, the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.
 <img
   src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/install_plugin.png" width="600px"></img></p>
 <p>Most plugins require the <strong>ImJoy Plugin Engine</strong>, to perform computations in
 Python. You will need to <strong>install</strong> it only once, but <strong>launch</strong> it each time
 you work with ImJoy. For more information for how to install and use the pluging engine, please consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
+<h2 id="fish-quant-rna-detection-in-3d">FISH-quant: RNA detection in 3D<a class="headerlink" href="#fish-quant-rna-detection-in-3d" title="Permanent link">&para;</a></h2>
+<p><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a> is a Matlab toolbox to localize RNAs in 3D from smFISH images. FISH-quant is often used to perform the RNA
+detection. Eventually, we would like to implement the main FISH-quant features in ImJoy.</p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/fq-screenshot.png" width="600px"></img></p>
                 
                   
                 
