@@ -11,18 +11,16 @@ We use a number of different open-source software packages, and detail their usa
 
 <img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/fq-screenshot.png" width="600px"></img>
 
-## Quick start
-Choose the desired analysis (listed in the banner)and follow the provided
-instructions for how to install the ImJoy plugin or use the Python source code.
+## Getting started
 
-## ImJoy and plugins
-We provide specific links to install the ImJoy plugins in dedicated workspaces.
-If you press such a link for the first time, you will
+### ImJoy: install the Plugin Engine
+To run the ImJoy plugins, you will also need the **Plugin Engine**. It allows to
+perform analysis in Python. You will need to install it only once, it will then
+automatically check for updates each time you launch it. We provid the [**Plugin Engine for different operating systems**](https://github.com/oeway/ImJoy-Python/releases)
 
-1. The ImJoy web app will open and ask you to install the specified plugin. Press
-on the `install` button. This will
 
+### ImJoy: install plugins
+We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces.
+If you press such a link the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the `install` button.
+<img
   src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/install_plugin.png" width="600px"></img>
-
-
-0. .
