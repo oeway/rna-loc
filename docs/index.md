@@ -15,7 +15,7 @@ We use a number of different open-source software packages, and detail their usa
 We provide different analysis workflows (you can select them also from the banners).
 For each we specify the requirements and the required installations.
 
-* [Analysis RNA distance distribution to cellular membranes](membraneEnrichment/memb-overview.md)
+* [Analysis RNA distance distribution to cellular membranes](membraneDistance/memb-overview.md)
 
 ### Working with ImJoy
 Most workflows depend on ImJoy plugins. ImJoy is an easy to use [image processing framework](https://imjoy.io/docs/#/overview).

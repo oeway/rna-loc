@@ -7,10 +7,10 @@ about can be found in the dedicated section below.
 
 1.  One folder per multi-channel image ("parental folder").
 2.  Each channel is saved as a separate `.tif` file containing all z-slices. Information
-    for how to convert stacks can be found here are [here](memb-plugin.md#multi-channel-conversion).
+    for how to convert stacks can be found here are [here](memb-analysis.md#multi-channel-conversion).
 3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the parental folder. RNA detection is described in more detail [here](memb-rna-detect.md).
 4.  Membrane annotations are stored in a dedicated subfolder `zstack_segmentation`.
-    More information [below](memb-plugin.md#annotations-of-cell-membrane).
+    More information [below](memb-analysis.md#annotations-of-cell-membrane).
 
 As an example, we have one image `img1`  with 3 channels. The first channels contain
 analyzed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
