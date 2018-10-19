@@ -1,6 +1,4 @@
 # rna-loc
-Analysing RNA localization in smFISH images.
-
 ---
 Analysing RNA localization in smFISH images.
 
