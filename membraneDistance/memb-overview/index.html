@@ -13,7 +13,7 @@
         <meta name="description" content="An ImJoy plugin to quantify RNA localization patterns">
       
       
-        <link rel="canonical" href="https://muellerflorian.github.io/rna_loc/membraneDistance/memb-overview/">
+        <link rel="canonical" href="https://muellerflorian.github.io/rna-loc/membraneDistance/memb-overview/">
       
       
         <meta name="author" content="Florian MUELLER">
@@ -113,7 +113,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://muellerflorian.github.io/rna_loc/" title="RNA localizer" class="md-header-nav__button md-logo">
+        <a href="https://muellerflorian.github.io/rna-loc/" title="RNA localizer" class="md-header-nav__button md-logo">
           
             <i class="md-icon">wb_sunny</i>
           
@@ -175,7 +175,7 @@
   
 
 
-  <a href="https://github.com/muellerflorian/rna_loc.git" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/muellerflorian/rna-loc.git" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -263,7 +263,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://muellerflorian.github.io/rna_loc/" title="RNA localizer" class="md-nav__button md-logo">
+    <a href="https://muellerflorian.github.io/rna-loc/" title="RNA localizer" class="md-nav__button md-logo">
       
         <i class="md-icon">wb_sunny</i>
       
@@ -278,7 +278,7 @@
   
 
 
-  <a href="https://github.com/muellerflorian/rna_loc.git" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/muellerflorian/rna-loc.git" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -576,12 +576,12 @@ This analysis requires</p>
 <p>To install the analysis plugin for one of the specified analysis, press on the
 corresponding link</p>
 <ul>
-<li><a href="https://imjoy.io/#/app?w=MembDist&amp;plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&amp;tag=CellMemb"><strong>Cell membrane enrichment</strong></a></li>
+<li><a href="https://imjoy.io/#/app?w=MembDist&amp;plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&amp;tag=CellMemb"><strong>Cell membrane enrichment</strong></a></li>
 </ul>
 <p>This will open a dialog box where you can install the plugin by pressing the
 <code>install</code> button. For more information for how to install and use the pluging engine, please
 consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img></p>
 <h2 id="test-date">Test date<a class="headerlink" href="#test-date" title="Permanent link">&para;</a></h2>
 <p>You can download already processed test data from <a href="https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0"><strong>Dropbox</strong></a>. The zip archive contains data following the naming conventions of the examples below.</p>
 <h2 id="analysis-details">Analysis details<a class="headerlink" href="#analysis-details" title="Permanent link">&para;</a></h2>
@@ -590,7 +590,7 @@ the cell. A simple example is a circle. The maximum distance that you can be awa
 <p>To normalized for this effect, we calculate all possible distance from the membrane
 for a given cell with a <strong>distance transformation</strong>. This tranformation results in
 an image, where the pixel values are not fluorescence intensities but distance values. An example is shown below. The blue lines are the cell outlines. The green dots are the detected RNAs. The image is the distance transform. The intensity values are distance to the membrane in pixels.</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/dist_transform.png" width="400px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/dist_transform.png" width="400px"></img></p>
 <p>We measure for all RNAs the distance to the membrane and calculate a
 histgram. We report the</p>
 <ul>
@@ -599,7 +599,7 @@ histgram. We report the</p>
 <li>Normalized distance histogram of all pixels in the cell.</li>
 <li>Normalized RNA histogram with the pixel histogram.</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/memb_summaryPlot.png" width="600px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_summaryPlot.png" width="600px"></img></p>
                 
                   
                 
