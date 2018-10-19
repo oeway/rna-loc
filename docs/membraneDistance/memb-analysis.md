@@ -15,21 +15,23 @@ about can be found in the dedicated section below.
 As an example, we have one image `img1`  with 3 channels. The first channels contain
 analyzed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
 
-    .
-    ├─ img1/
-    │  ├─ C1-img1.tif                          # smFISH image (channel 1)
-    │  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
-    │  ├─ C1-img1__settings_MATURE.txt         # FQ detection settings (channel 1)
-    │  ├─ C2-img1.tif                          # smFISH image of (channel 2)
-    │  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
-    │  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
-    │  ├─ zstack_segmentation/
-    │  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
-    │  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
-    │  │  ├─ C3-img1_Z8.tif                    # Image of z-slice 2
-    │  │  ├─ C3-img1_Z8__RoiSet.zip            # Membrane annotation of slice 2
-    ├─ img2/
-    .
+```
+.
+├─ img1/
+│  ├─ C1-img1.tif                          # smFISH image (channel 1)
+│  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
+│  ├─ C1-img1__settings_MATURE.txt         # FQ detection settings (channel 1)
+│  ├─ C2-img1.tif                          # smFISH image of (channel 2)
+│  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
+│  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
+│  ├─ zstack_segmentation/
+│  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
+│  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
+│  │  ├─ C3-img1_Z8.tif                    # Image of z-slice 2
+│  │  ├─ C3-img1_Z8__RoiSet.zip            # Membrane annotation of slice 2
+├─ img2/
+.
+```
 
 ### Multi-channel conversion
 
