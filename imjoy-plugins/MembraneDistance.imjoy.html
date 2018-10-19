@@ -199,7 +199,7 @@ class PythonPlugin():
     # Load root from browser memory
     def load_root(self,root):
         print(f'Found root directory {root}')
-        if root == "null" or not os.path.isdir(root):
+        if root is None or not os.path.isdir(root):
             self.root = '~'
         else:
             self.root = root
