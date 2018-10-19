@@ -4,7 +4,7 @@ Plugin to analyze enrichment of RNAs relative to cellular membranes.
 
 <config lang="json">
 {
-  "name": "MembraneEnrichment",
+  "name": "MembraneDistance",
   "mode": "pyworker",
   "version": "0.1.0",
   "api_version": "0.1.1",
@@ -180,7 +180,7 @@ class PythonPlugin():
                 else:
                     raise('unknown entry, expected str, list or int')
 
-        api.register({"name" : "MembraneEnrichment",
+        api.register({"name" : "MembraneDistance",
                          "ui": ui})
 
 
@@ -234,7 +234,7 @@ class PythonPlugin():
         parameters_loaded = json.loads(parameters) 
         
         if parameters_loaded.keys() == self.parameters.keys():
-            print('Loading updated paramater presets for MembraneEnrichment plugin')
+            print('Loading updated paramater presets for MembraneDistance plugin')
             self.parameters = copy.deepcopy(parameters_loaded)
 
 
