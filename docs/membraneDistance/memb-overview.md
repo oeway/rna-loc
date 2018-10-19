@@ -11,7 +11,7 @@ This analysis requires
 To install the analysis plugin for one of the specified analysis, press on the
 corresponding link
 
--   [**Cell membrane enrichment**](https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistanceq.imjoy.html&tag=CellMemb)
+-   [**Cell membrane enrichment**](https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb)
 
 This will open a dialog box where you can install the plugin by pressing the
 `install` button. For more information for how to install and use the pluging engine, please
