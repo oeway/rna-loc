@@ -10,8 +10,8 @@ from skimage.io import imsave
 import shutil
 
 # My Stuff
-from rna_loc import annotationImporter
-from rna_loc import maskGenerator
+from rnaloc import annotationImporter
+from rnaloc import maskGenerator
 
 def create_folder(folder_new):
     if not os.path.isdir(folder_new):

@@ -90,7 +90,7 @@ The entire functinality of the plugin can be controlled within the plugin
 window. If you expand the plugin, you will see all parameters and operations
 that can be performed
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/ui_CellCortex.png" width="350px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/ui_CellCortex.png" width="350px"></img>
 
 All options are explained in the Table below. If you change these parameters, the
 changed values will be saved in the browser and reused the next time you launch
@@ -130,7 +130,7 @@ ImJoy.
 The analysis script will create a new folder with the same name as the selected results file. In this folder it will create a subfolder `MembDist_yymmdd-hhmm` containing the analysis results. To allow to redo the analysis with different settings, the pluging  will create for each performed analysis a separate folder name with the time-stamp when the analysis was performed (format `yymmdd-hhmm`). This folder contains several files:
 
 -   **\_DistanceEnrichmentSummary.png**: image containing the pooled analysis of all slices
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/memb_summaryPlot.png" width="600px"></img>
+   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_summaryPlot.png" width="600px"></img>
 
 -   **\_HistogramPooled.csv**: csv file containing the histograms of the RNA-membrane distance pooled from all z-slices. This can be opened with any Spreadsheet application (Excel, LibreOffice, Numbers, ...) and results from different images
 can then be pooled together. It contains the following data
@@ -140,9 +140,9 @@ can then be pooled together. It contains the following data
     - `histRNA_all_norm`: normalized RNA histogram (values add to 1).
     - `histpix_all_norm`: normalized distance histogram of all pixels in the cell.
     - `hist_RNA_all_normPix`: normalized RNA histogram with the pixel histogram.
-       <img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/memb_csv.png" width="450px"></img>
+       <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_csv.png" width="450px"></img>
 -   **Z-i.png**: results of slice 'i'
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/memb_slicePlot.png" width="600px"></img>
+   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_slicePlot.png" width="600px"></img>
 
 -   **DataAll.json**: json file containing all analysis results including settings. Can
 

@@ -11,13 +11,13 @@ This analysis requires
 To install the analysis plugin for one of the specified analysis, press on the
 corresponding link
 
--   [**Cell membrane enrichment**](https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna_loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&tag=CellMemb)
+-   [**Cell membrane enrichment**](https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneEnrichment.imjoy.html&tag=CellMemb)
 
 This will open a dialog box where you can install the plugin by pressing the
 `install` button. For more information for how to install and use the pluging engine, please
 consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/imjoy-install-membdist.png" width="600px"></img>
 
 
 ## Test date
@@ -33,7 +33,7 @@ To normalized for this effect, we calculate all possible distance from the membr
 for a given cell with a **distance transformation**. This tranformation results in
 an image, where the pixel values are not fluorescence intensities but distance values. An example is shown below. The blue lines are the cell outlines. The green dots are the detected RNAs. The image is the distance transform. The intensity values are distance to the membrane in pixels.
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/dist_transform.png" width="400px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/dist_transform.png" width="400px"></img>
 
 We measure for all RNAs the distance to the membrane and calculate a
 histgram. We report the
@@ -43,4 +43,4 @@ histgram. We report the
 -   Normalized distance histogram of all pixels in the cell.
 -   Normalized RNA histogram with the pixel histogram.
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna_loc/master/docs/img/memb_summaryPlot.png" width="600px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_summaryPlot.png" width="600px"></img>

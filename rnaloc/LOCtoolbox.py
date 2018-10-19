@@ -13,9 +13,9 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 
 import os
-from rna_loc import annotationImporter
-from rna_loc import maskGenerator
-from rna_loc import FQtoolbox
+from rnaloc import annotationImporter
+from rnaloc import maskGenerator
+from rnaloc import FQtoolbox
 import numpy as np
 import re
 from scipy import ndimage

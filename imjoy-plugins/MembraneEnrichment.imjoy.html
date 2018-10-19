@@ -1,4 +1,4 @@
-﻿<docs lang="markdown">
+<docs lang="markdown">
 Plugin to analyze enrichment of RNAs relative to cellular membranes.
 </docs>
 
@@ -37,13 +37,13 @@ import copy
 
 # Development on local machine
 if 'dev' in api.TAG:
-    sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna_loc/')
-    from rna_loc import LOCtoolbox
+    sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
+    from rnaloc import LOCtoolbox
 
-# Install code. Dropbox or GitHub - this can be eventuall replaced by a GitHub based code distribution
+# Install code from GitHub [In case this should be private, download from Dropbox would also be possible]
 else:
     print('Stable version')
-    from rna_loc import LOCtoolbox
+    from rnaloc import LOCtoolbox
 
     #url = 'https://www.dropbox.com/s/nbbif7inmpgznfn/src.zip?dl=1'
     #r = requests.get(url, allow_redirects=True)
@@ -199,7 +199,7 @@ class PythonPlugin():
     # Load root from browser memory
     def load_root(self,root):
         print(f'Found root directory {root}')
-        if root is None or not os.path.isdir(root):
+        if root == "null" or not os.path.isdir(root):
             self.root = '~'
         else:
             self.root = root
