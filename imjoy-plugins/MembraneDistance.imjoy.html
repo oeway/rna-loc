@@ -193,9 +193,10 @@ class PythonPlugin():
 
     #Set root folder for analysis
     def set_root(self,path):
-        api.showStatus(f'Root folder set to {path}')
-        self.root = path
-        api.setConfig('root_folder', path)
+        if os.path.isdir(path):
+          api.showStatus(f'Root folder set to {path}')
+          self.root = path
+          api.setConfig('root_folder', path)
 
     # Load root from browser memory
     def load_root(self,root):

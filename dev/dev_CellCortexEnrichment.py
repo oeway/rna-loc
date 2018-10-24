@@ -1,17 +1,15 @@
 # Update system path to find pyfishquant
 import sys
-sys.path.append('//Volumes//PILON_HD2//fmueller//Documents//code//ImJoy_dev//locmembrane//src')
+sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/img-segment/imgseg')
 import importlib  # to reload: importlib.reload(AnnotationImporter
 
 #
-#
-
 
 #%% Test function with entire analysis workflow 
-import LOCtoolbox
-importlib.reload(LOCtoolbox)
+import segmentationToolbox
+importlib.reload(segmentationToolbox)
 
-results_all = LOCtoolbox.process_file(FQ_file='/Volumes/PILON_HD2/fmueller/Documents/Data/ImJoy/Segmentation__Dylan/2_ImJoy_membrane/img1/C1-img1__spots.txt', 
+results_all = segmentationToolbox.convert_annotations_fiji(FQ_file='/Volumes/PILON_HD2/fmueller/Documents/Data/ImJoy/Segmentation__Dylan/2_ImJoy_membrane/img1/C1-img1__spots.txt', 
                         img_size=(960,960),
                         bin_prop=(0,90,20),
                         channels={'cells':'C3-'},
