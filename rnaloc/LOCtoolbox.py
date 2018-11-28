@@ -21,7 +21,6 @@ import re
 from scipy import ndimage
 import json
 import time
-import csv
 
 # JSON encoder for numpy
 # From https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
@@ -34,7 +33,7 @@ class NumpyEncoder(json.JSONEncoder):
 
 # Process specified FQ file
 
-def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={'cells':'C3-'},data_category={'roi':''},annotation_extension ='__RoiSet.zip',img_extension='.tif',show_plot=None,Zrange=None,dZ=2):
+def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={'cells':'C3-'},data_category={'roi':''},annotation_extension ='__RoiSet.zip',img_extension='.tif',show_plot=False,Zrange=None,dZ=2):
     '''
     Function uses annotations generated in FIJI and creates mask based
     on the specified parameters. The resulting files are zipped and be
@@ -74,7 +73,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     Zrna = spots_all[:,[18]]
 
     # Open annotations
-    print('Open annotations')
+    print(' == Open annotations')
     if 'RoiSet.zip' in annotation_extension:
 
         path_annot = os.path.join(path_results,'zstack_segmentation')
@@ -109,7 +108,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
 
     # Loop over all z-slices
     hist_slice ={}
-    print('Loop over slices')
+    print(' == Loop over slices')
     for k, v in annotatFiles.items():
 
         print(f'Slice: {k}')
@@ -163,7 +162,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
 
         # Plot results
         name_save = os.path.join(path_save,f'Z-{Zmask}.png')
-        plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save)
+        plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plot)
 
         hist_slice[f'Z{Zmask}'] = hist_plot
 
@@ -185,9 +184,9 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
                      'hist_RNA_all_normPix':hist_RNA_all_normPix}
     name_save = os.path.join(path_save,'_DistanceEnrichmentSummary.png')
     plot_results_all(hist_plot_all,name_save)
+    
     if show_plot:
         show_plot(name_save)
-
 
     # Save entire analysis results as json
     input_args.pop('show_plot', None)
@@ -215,8 +214,11 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     #plt.savefig(os.path.join(path_save, 'CellCortexDist.png'),dpi=200)
     #plt.close()
 
-def plot_results_all(hist_plot,name_save = None):
+def plot_results_all(hist_plot,name_save = None,show_plot=False):
 
+    if not show_plot:
+        plt.ioff()
+    
     # Get parameters to plot histogram
     center = hist_plot['center']
     width = hist_plot['width']
@@ -263,10 +265,15 @@ def plot_results_all(hist_plot,name_save = None):
 
     if name_save:
         plt.savefig(name_save,dpi=200)
-        #plt.close()
+        
+    if not show_plot:    
+        plt.close()
 
-def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save=None):
+def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save=None,show_plot=False):
 
+    if not show_plot:
+         plt.ioff()
+    
     # Find min and max values for plotting
     pad = 10
     indMaskAx0 = np.argwhere(mask_all.sum(axis=0))
@@ -350,4 +357,6 @@ def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,na
 
     if name_save:
         plt.savefig(name_save,dpi=200)
-        #plt.close()
+        
+    if not show_plot:
+        plt.close()

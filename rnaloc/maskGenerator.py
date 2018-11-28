@@ -88,9 +88,7 @@ class BinaryMaskGenerator(MaskGenerator):
             roi_dict = annot_data['roi']
 
             # Get dimensions of image and created masks of same size
-
             image_size = annot_data['image'].shape
-            print(image_size)
 
             # Filled masks and edge mask for polygons
             mask_fill = np.zeros(image_size, dtype=np.uint8)
@@ -112,8 +110,6 @@ class BinaryMaskGenerator(MaskGenerator):
             # Loop over all roi
             i_roi = 0
             for roi_key, roi in roi_dict.items():
-
-                print(roi_key)
 
                 roi_pos = roi['pos']
 

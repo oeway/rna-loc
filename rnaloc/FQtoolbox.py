@@ -167,11 +167,11 @@ def read_FQ_matlab(file_open):
         if 'PARAMETERS' in line:
             iLine += 2
             par_microscope = data[iLine].split('\t')
-            fq_dict['settings'].update({'microscope':{'pix_xy':int(par_microscope[0]),
-                                                      'pix_z':int(par_microscope[1]),
+            fq_dict['settings'].update({'microscope':{'pix_xy':float(par_microscope[0]),
+                                                      'pix_z':float(par_microscope[1]),
                                                       'RI':float(par_microscope[2]),
-                                                      'EX':int(par_microscope[3]),
-                                                      'EM':int(par_microscope[4]),
+                                                      'EX':float(par_microscope[3]),
+                                                      'EM':float(par_microscope[4]),
                                                       'NA':float(par_microscope[5]),
                                                       'type':par_microscope[6]}})
 
