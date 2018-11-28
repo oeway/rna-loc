@@ -15,9 +15,11 @@ results_all = LOCtoolbox.process_file(FQ_file=file_load,
                         data_category={'roi':''},
                         annotation_extension='__RoiSet.zip',
                         img_extension='.tif',
-                        show_plot=False,
+                        show_plots = False,
                         Zrange=(0,0),
-                        dZ = 0)
+                        dZ = 0,
+                        plot_callback=None,
+                        progress_callback = None)
 
 #%% BUILD ENTIRE WORKFLOW 
 import sys
@@ -31,6 +33,8 @@ import os
 import annotationImporter, maskGenerator
 import FQtoolbox
 
+if  None:
+    print('a')
 
 #%% READ ANNOTATION DATA
 importlib.reload(annotationImporter)

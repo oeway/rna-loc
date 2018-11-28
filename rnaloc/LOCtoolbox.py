@@ -33,7 +33,7 @@ class NumpyEncoder(json.JSONEncoder):
 
 # Process specified FQ file
 
-def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={'cells':'C3-'},data_category={'roi':''},annotation_extension ='__RoiSet.zip',img_extension='.tif',show_plot=False,Zrange=None,dZ=2):
+def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={'cells':'C3-'},data_category={'roi':''},annotation_extension ='__RoiSet.zip',img_extension='.tif',show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None):
     '''
     Function uses annotations generated in FIJI and creates mask based
     on the specified parameters. The resulting files are zipped and be
@@ -41,7 +41,8 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
 
     Args:
 
-
+        plot_callback ... callback function to plot results (e.g. in ImJoy interface)
+        
         Zrange [tuple, 2 elements]. [Optional] Tuple specifying minimum and maximum z-value that is considered
         in analysis.
 
@@ -50,6 +51,14 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     '''
     # Get input args. Has to be FIRST call!
     input_args = locals()
+    
+    
+    # Plot progress via callback
+    if progress_callback:
+        print("Attempt update of progress bar")
+        print(progress_callback)
+        progress_callback({"id":"bar1","text":"YES!","progress":70})
+            
 
     # Make sure input args are correct - assignments with 0 can come from ImJoy
     if Zrange[0] ==0 or Zrange[1] ==0:
@@ -79,7 +88,8 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         path_annot = os.path.join(path_results,'zstack_segmentation')
         folderImporter = annotationImporter.FolderImporter(channels=channels,
                                                            data_category=data_category,
-                                                           annot_ext=annotation_extension)
+                                                           annot_ext=annotation_extension,
+                                                           progress_callback=progress_callback)
         annotDict = folderImporter.load(path_annot)
         print('average roi size:', annotDict['roi_size'])
 
@@ -109,11 +119,18 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     # Loop over all z-slices
     hist_slice ={}
     print(' == Loop over slices')
-    for k, v in annotatFiles.items():
+    N_annot = len(annotatFiles)
+    for idx_file, (k_annot, v_annot) in enumerate(annotatFiles.items()):
 
-        print(f'Slice: {k}')
+        print(f'Slice: {k_annot}')
+
+        # Plot progress via callback
+        if progress_callback:
+            perc = 100*idx_file/(N_annot-1)
+            progress_callback({"id":"bar3","text":f"{perc}%, {k_annot}","progress":perc})
+        
         # Get Z coordinate
-        m = re.search('.*_Z([0-9]*)\.tif',k)
+        m = re.search('.*_Z([0-9]*)\.tif',k_annot)
         Zmask = int(m.group(1))
 
         # Check if outside of specified z range
@@ -128,13 +145,13 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         spots_loop_XY = spots_loop[:,[16, 17]].astype(int)
 
          # Distance transform
-        dist_membr = ndimage.distance_transform_edt(~v['mask_edge'])  # Negate mask
+        dist_membr = ndimage.distance_transform_edt(~v_annot['mask_edge'])  # Negate mask
 
         # Indices have to be inversed to access array
         dist_membr_RNA_loop = dist_membr[spots_loop_XY[:,0],spots_loop_XY[:,1]]
 
         # Get distance from membrane for all pixel in the cell
-        mask_all = v['mask_fill'] + v['mask_edge']
+        mask_all = v_annot['mask_fill'] + v_annot['mask_edge']
         dist_membr_pix_loop = dist_membr[mask_all]
 
         # Save values
@@ -162,7 +179,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
 
         # Plot results
         name_save = os.path.join(path_save,f'Z-{Zmask}.png')
-        plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plot)
+        plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plots)
 
         hist_slice[f'Z{Zmask}'] = hist_plot
 
@@ -183,13 +200,16 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
                      'histpix_all_norm':histpix_all_norm,
                      'hist_RNA_all_normPix':hist_RNA_all_normPix}
     name_save = os.path.join(path_save,'_DistanceEnrichmentSummary.png')
-    plot_results_all(hist_plot_all,name_save)
+    plot_results_all(hist_plot_all,name_save,show_plots)
     
-    if show_plot:
-        show_plot(name_save)
+    if plot_callback:
+        plot_callback(name_save)
 
     # Save entire analysis results as json
     input_args.pop('show_plot', None)
+    input_args.pop('plot_callback', None)
+    input_args.pop('progress_callback', None)
+        
     analysis_results = {'args': input_args,
                         'hist_all': hist_plot_all,
                         'hist_slice': hist_slice}
@@ -210,12 +230,9 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     return analysis_results
 
 
-    #return analysis_results
-    #plt.savefig(os.path.join(path_save, 'CellCortexDist.png'),dpi=200)
-    #plt.close()
+def plot_results_all(hist_plot,name_save = None, show_plot=False):
 
-def plot_results_all(hist_plot,name_save = None,show_plot=False):
-
+    # Don't show plots when they are saved
     if not show_plot:
         plt.ioff()
     
@@ -268,6 +285,8 @@ def plot_results_all(hist_plot,name_save = None,show_plot=False):
         
     if not show_plot:    
         plt.close()
+        
+        
 
 def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save=None,show_plot=False):
 

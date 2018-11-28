@@ -77,7 +77,7 @@ class FolderImporter(AnnotationImporter):
         called 'train'.
     '''
 
-    def __init__(self, channels={'cells': 'Cy5', 'nuclei': 'DAPI'}, annot_type='imagej', img_ext='.tif', annot_ext = '_ROI.zip', data_category={'train': 'train', 'valid': 'valid'}):
+    def __init__(self, channels={'cells': 'Cy5', 'nuclei': 'DAPI'}, annot_type='imagej', img_ext='.tif', annot_ext = '_ROI.zip', data_category={'train': 'train', 'valid': 'valid'},progress_callback=None):
         ''' Initiate annotation dictionary '''
 
         # Generate dictionary and save config
@@ -107,7 +107,7 @@ class FolderImporter(AnnotationImporter):
     def load(self, path_open):
         ''' 'Read folder content based on defined config.
         Args:
-        path_open: folder name containg the images and annotations for data-set.
+        path_open: folder name containing the images and annotations for data-set.
         '''
 
         annotDict = self.annotDict.copy()
@@ -115,8 +115,8 @@ class FolderImporter(AnnotationImporter):
         roi_size_mean = self.annotDict['config']['roi_size'].copy()
 
         # Loop over data categories and verify if corresponding folder exists
-        for key_categ, categ in self.annotDict['config']['data_category'].items():
-
+        for idx_categ, (key_categ, categ) in enumerate(self.annotDict['config']['data_category'].items()):
+            
             # Construct folder name for data cateogry and verify if it exists
             folder_data = os.path.join(path_open, categ)
             if not os.path.isdir(folder_data):
@@ -125,8 +125,8 @@ class FolderImporter(AnnotationImporter):
                 continue
 
             # Loop over folder content
-            for file_name in os.listdir(folder_data):
-
+            for idx_file, file_name in enumerate(os.listdir(folder_data)):
+                              
                 # Test different channels
                 for key_channel, channel in self.annotDict['config']['channels'].items():
 
