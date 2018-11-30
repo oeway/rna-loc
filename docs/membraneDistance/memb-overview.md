@@ -8,11 +8,12 @@ the cell. This analysis requires
 
 ## Installing the ImJoy plugin
 
-To install the analysis plugin for a specifc analysis, select the
-corresponding link below.
+To install the analysis plugin for a specific analysis, select the
+corresponding links below. For some tasks, you might have to install several plugins.
 
-* <a href="https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">**Cell membrane enrichment**</a>
-
+* **Cell membrane enrichment**.
+    - <a href="https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">Processing plugin</a>
+    - <a href="https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">Results display plugin</a>
 
 This will open a dialog box where you can install the plugin by pressing the
 `install` button.
@@ -26,7 +27,7 @@ consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-
 
 You can download already processed test data for the Cell membrane enrichment plugin, from [**Dropbox**](https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0). The zip archive contains data following the naming conventions of the examples below.
 
-## Analysis details
+## Analysis overview
 
 For each RNA, we determine the closest distance of an RNA to a membrane. One thing to keep in mind more pixel close to the membrane than far away, e.g. in the center of
 the cell. A simple example is a circle. The maximum distance that you can be away from the “membrane” is the radius of the circle. However, there is only one possibility to be that far away (in the center). However, there are many more “close” positions.  Plotting a histogram of the distance to the membrane for all possible positions in the circle,  will yield a distribtion that strongly enriched for small distances.

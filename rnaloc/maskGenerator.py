@@ -62,10 +62,11 @@ class BinaryMaskGenerator(MaskGenerator):
     ... freelines, then only an edge mask is created
     '''
 
-    def __init__(self, erose_size=5, obj_size_rem=500, save_indiv=False):
+    def __init__(self, erose_size=5, obj_size_rem=500, save_indiv=False,progress_callback=None):
         self.erose_size = erose_size
         self.obj_size_rem = obj_size_rem
         self.save_indiv = save_indiv
+        self.progress_callback = progress_callback
 
     def generate(self, annotDic):
         '''
@@ -81,8 +82,14 @@ class BinaryMaskGenerator(MaskGenerator):
         weighted edge mask.
         '''
         maskDict = {}
+        N_annot = len(annotDic)
 
-        for annot_key, annot_data in annotDic.items():
+        for idx_annot, (annot_key, annot_data) in enumerate(annotDic.items()):
+
+            # Plot progress via callback
+            if self.progress_callback:
+                perc = int(100*(idx_annot+1)/(N_annot))
+                self.progress_callback({"task":"create_masks","text":f"{perc}%, {annot_key}","progress":perc})
 
             # ROI dictionary
             roi_dict = annot_data['roi']

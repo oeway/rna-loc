@@ -21,6 +21,7 @@ import re
 from scipy import ndimage
 import json
 import time
+import base64
 
 # JSON encoder for numpy
 # From https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
@@ -42,7 +43,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     Args:
 
         plot_callback ... callback function to plot results (e.g. in ImJoy interface)
-        
+
         Zrange [tuple, 2 elements]. [Optional] Tuple specifying minimum and maximum z-value that is considered
         in analysis.
 
@@ -51,14 +52,6 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     '''
     # Get input args. Has to be FIRST call!
     input_args = locals()
-    
-    
-    # Plot progress via callback
-    if progress_callback:
-        print("Attempt update of progress bar")
-        print(progress_callback)
-        progress_callback({"id":"bar1","text":"YES!","progress":70})
-            
 
     # Make sure input args are correct - assignments with 0 can come from ImJoy
     if Zrange[0] ==0 or Zrange[1] ==0:
@@ -96,7 +89,8 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         # Generate binary masks for a selected data-set
         binaryGen = maskGenerator.BinaryMaskGenerator(erose_size=5,
                                                       obj_size_rem=500,
-                                                      save_indiv=True)
+                                                      save_indiv=True,
+                                                      progress_callback=progress_callback)
 
         # The generate function uses as an input the sub-dictionary for one data-category and one channel
         annotatFiles = annotDict['roi']['cells']
@@ -120,15 +114,16 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
     hist_slice ={}
     print(' == Loop over slices')
     N_annot = len(annotatFiles)
+
     for idx_file, (k_annot, v_annot) in enumerate(annotatFiles.items()):
 
-        print(f'Slice: {k_annot}')
-
-        # Plot progress via callback
+        # Indicate progress via callback
         if progress_callback:
-            perc = 100*idx_file/(N_annot-1)
-            progress_callback({"id":"bar3","text":f"{perc}%, {k_annot}","progress":perc})
-        
+            perc = int(100*(idx_file+1)/(N_annot))
+            progress_callback({"task":"analyze_slices","text":f"{perc}%, {k_annot}","progress":perc})
+        else:
+            print(f'Slice: {k_annot}')
+            
         # Get Z coordinate
         m = re.search('.*_Z([0-9]*)\.tif',k_annot)
         Zmask = int(m.group(1))
@@ -176,12 +171,13 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         hist_plot = {'width':width,'center':center,'bins':bins,
                      'histRNA':histRNA,'histpix':histpix,
                      'histRNAnormPix':histRNAnormPix}
+        hist_slice[f'Z{Zmask}'] = hist_plot
 
         # Plot results
         name_save = os.path.join(path_save,f'Z-{Zmask}.png')
         plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plots)
 
-        hist_slice[f'Z{Zmask}'] = hist_plot
+
 
     # Analyze all slices
     histRNA_all, bins = np.histogram(dist_membr_RNA,binsHist ,density=False)
@@ -201,15 +197,22 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
                      'hist_RNA_all_normPix':hist_RNA_all_normPix}
     name_save = os.path.join(path_save,'_DistanceEnrichmentSummary.png')
     plot_results_all(hist_plot_all,name_save,show_plots)
-    
+
     if plot_callback:
         plot_callback(name_save)
+
+    if progress_callback:
+        with open(name_save, 'rb') as f:
+            data = f.read()
+            result = base64.b64encode(data).decode('ascii')
+            imgurl = 'data:image/png;base64,' + result
+            progress_callback({"task":"show_results","src":imgurl})
 
     # Save entire analysis results as json
     input_args.pop('show_plot', None)
     input_args.pop('plot_callback', None)
     input_args.pop('progress_callback', None)
-        
+
     analysis_results = {'args': input_args,
                         'hist_all': hist_plot_all,
                         'hist_slice': hist_slice}
@@ -235,7 +238,7 @@ def plot_results_all(hist_plot,name_save = None, show_plot=False):
     # Don't show plots when they are saved
     if not show_plot:
         plt.ioff()
-    
+
     # Get parameters to plot histogram
     center = hist_plot['center']
     width = hist_plot['width']
@@ -282,17 +285,17 @@ def plot_results_all(hist_plot,name_save = None, show_plot=False):
 
     if name_save:
         plt.savefig(name_save,dpi=200)
-        
-    if not show_plot:    
+
+    if not show_plot:
         plt.close()
-        
-        
+
+
 
 def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save=None,show_plot=False):
 
     if not show_plot:
          plt.ioff()
-    
+
     # Find min and max values for plotting
     pad = 10
     indMaskAx0 = np.argwhere(mask_all.sum(axis=0))
@@ -376,6 +379,6 @@ def plot_results_slice(Zmask,mask,mask_all,spots_loop_XY,dist_membr,hist_plot,na
 
     if name_save:
         plt.savefig(name_save,dpi=200)
-        
+
     if not show_plot:
         plt.close()

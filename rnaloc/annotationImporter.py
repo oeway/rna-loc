@@ -88,6 +88,7 @@ class FolderImporter(AnnotationImporter):
         self.annotDict['config']['img_ext'] = img_ext
         self.annotDict['config']['annot_ext'] = annot_ext
         self.annotDict['config']['data_category'] = data_category
+        self.progress_callback=progress_callback
 
         # Create list of of all channels
         self.channel_list = [i for i in channels.items()]
@@ -115,8 +116,14 @@ class FolderImporter(AnnotationImporter):
         roi_size_mean = self.annotDict['config']['roi_size'].copy()
 
         # Loop over data categories and verify if corresponding folder exists
+        N_categ = len(self.annotDict['config']['data_category'])
         for idx_categ, (key_categ, categ) in enumerate(self.annotDict['config']['data_category'].items()):
-            
+
+            # Plot progress via callback
+            if self.progress_callback:
+                perc = int(100*(idx_categ+1)/(N_categ))
+                self.progress_callback({"task":"import_annot_categ","text":f"{perc}%, {categ}","progress":perc})
+
             # Construct folder name for data cateogry and verify if it exists
             folder_data = os.path.join(path_open, categ)
             if not os.path.isdir(folder_data):
@@ -125,8 +132,16 @@ class FolderImporter(AnnotationImporter):
                 continue
 
             # Loop over folder content
-            for idx_file, file_name in enumerate(os.listdir(folder_data)):
-                              
+            list_files = os.listdir(folder_data)
+            N_files  = len(list_files)
+            for idx_file, file_name in enumerate(list_files):
+
+                # Plot progress via callback
+                if self.progress_callback:
+                    perc = int(100*(idx_file+1)/(N_files))
+                    self.progress_callback({"task":"import_annot_files","text":f"{perc}%, {file_name}","progress":perc})
+                    #self.progress_callback({"task":"import_annot_files","text":f"{perc}%, {file_name}","progress":perc})
+
                 # Test different channels
                 for key_channel, channel in self.annotDict['config']['channels'].items():
 

@@ -127,6 +127,13 @@ desired folder.
 The specified root folder is also saved, and will be resused the next time you launch
 ImJoy.
 
+### Progress window
+Once you start the analysis, ImJoy will show you a progress window with progressbars
+for the different steps. Once done, it will display the final result in this image.
+
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_progress.png" width="450px"></img>
+
+
 ### Stored results
 
 The analysis script will create a new folder with the same name as the selected results file. In this folder it will create a subfolder `MembDist_yymmdd-hhmm` containing the analysis results. To allow to redo the analysis with different settings, the pluging  will create for each performed analysis a separate folder name with the time-stamp when the analysis was performed (format `yymmdd-hhmm`). This folder contains several files:
