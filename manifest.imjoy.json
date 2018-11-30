@@ -1,0 +1,48 @@
+{
+ "name": "RNA-loc",
+ "description": "ImJoy plugins to study RNA localization",
+ "version": "0.2.0",
+ "uri_root": "/imjoy-plugins",
+ "plugins": [
+  {
+  "name": "MembraneDistProgress",
+  "mode": "window",
+  "tags": [],
+  "ui": "UI for Untitled Plugin",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "describe your plugin here.",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "runnable": false,
+  "env": "",
+  "requirements": ["https://cdn.plot.ly/plotly-latest.min.js",
+        "https://www.w3schools.com/w3css/4/w3.css",
+        "https://www.w3schools.com/lib/w3-theme-indigo.css"],
+  "dependencies": [],
+  "defaults": {"w": 15, "h": 12},
+  "uri": "MembraneDistProgress.imjoy.html"
+},
+{
+  "name": "MembraneDistance",
+  "mode": "pyworker",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "Plugin to analyze enrichment of RNAs relative to cellular membranes.",
+  "tags": ["CellMemb","NuclearEnvelop","dev_CellMemb","dev_NuclearEnvelop"],
+  "ui": [{"dZ": {"id":"dZ", "type":"string", "placeholder":20}}],
+  "inputs": null,
+  "outputs": null,
+  "icon": "border_outer",
+  "env": {"CellMemb": "conda create -n rnaloc python=3.6",
+          "NuclearEnvelop": "conda create -n rnaloc python=3.6"},
+  "requirements": { "CellMemb":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup"],
+                    "NuclearEnvelop":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup"],
+                    "dev_CellMemb": ["scikit-image", "read-roi", "nested-lookup"],
+                    "dev_NuclearEnvelop": ["scikit-image", "read-roi", "nested-lookup"]},
+  "dependencies": ["muellerflorian/rna-loc:MembraneDistProgress"],
+  "uri": "MembraneDistance.imjoy.html"
+}
+ ]
+}
