@@ -12,7 +12,7 @@ To install the analysis plugin for a specific analysis, select the
 corresponding links below. For some tasks, additional helper plugins might be
 installed automatically.
 
-* <a href="https://imjoy.io/#/app?&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">**Cell membrane enrichment**</a>
+* <a href="http://imjoy.io/#/app?plugin=muellerflorian/rna-loc:MembraneDistance@CellMemb&w=CellMemb"  target="_blank">**Cell membrane enrichment**</a>
 
 
 This will open a dialog box where you can install the plugin by pressing the
