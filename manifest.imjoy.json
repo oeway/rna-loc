@@ -1,6 +1,6 @@
 {
  "name": "RNA-loc",
- "description": "",
+ "description": "ImJoy plugins to study RNA localization",
  "version": "0.2.0",
  "uri_root": "/imjoy-plugins",
  "plugins": [
@@ -42,7 +42,7 @@
                     "dev_CellMemb": ["scikit-image", "read-roi", "nested-lookup"],
                     "dev_NuclearEnvelop": ["scikit-image", "read-roi", "nested-lookup"]},
   "dependencies": ["https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html"],
-  "uri": MembraneDistance.imjoy.html"
+  "uri": "MembraneDistance.imjoy.html"
 }
  ]
 }
