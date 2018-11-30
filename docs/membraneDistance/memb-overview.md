@@ -11,9 +11,9 @@ the cell. This analysis requires
 To install the analysis plugin for a specific analysis, select the
 corresponding links below. For some tasks, you might have to install several plugins.
 
-* **Cell membrane enrichment**. Two plugins are required. 
-    - <a href="https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">Processing plugin</a>
-    - <a href="https://imjoy.io/#/app?w=MembDist&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">Progress window plugin</a>
+* **Cell membrane enrichment**. Two plugins are required.
+    - <a href="https://imjoy.io/#/app?&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistance.imjoy.html&tag=CellMemb&w=CellMemb"  target="_blank">Processing plugin</a>
+    - <a href="https://imjoy.io/#/app?&plugin=https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html&w=CellMemb"  target="_blank">Progress window plugin</a>
 
 This will open a dialog box where you can install the plugin by pressing the
 `install` button.
