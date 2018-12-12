@@ -5,19 +5,19 @@ Plugin to analyze enrichment of RNAs relative to cellular membranes.
 <config lang="json">
 {
   "name": "MembraneDistance",
-  "mode": "pyworker",
+  "type": "native-python",
   "version": "0.1.0",
-  "api_version": "0.1.1",
+  "api_version": "0.1.2",
   "description": "Plugin to analyze enrichment of RNAs relative to cellular membranes.",
   "tags": ["CellMemb","NuclearEnvelop","dev_CellMemb","dev_NuclearEnvelop"],
   "ui": [{"dZ": {"id":"dZ", "type":"string", "placeholder":20}}],
   "inputs": null,
   "outputs": null,
   "icon": "border_outer",
-  "env": {"CellMemb": "conda create -n rnaloc python=3.6",
-          "NuclearEnvelop": "conda create -n rnaloc python=3.6"},
-  "requirements": { "CellMemb":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup"],
-                    "NuclearEnvelop":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup"],
+  "env": {"CellMemb": "conda create -n rnalocalize python=3.6",
+          "NuclearEnvelop": "conda create -n rnalocalize python=3.6"},
+  "requirements": { "CellMemb":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup","--upgrade"],
+                    "NuclearEnvelop":["git+https://github.com/muellerflorian/rna-loc.git","scikit-image", "read-roi", "nested-lookup","--upgrade"],
                     "dev_CellMemb": ["scikit-image", "read-roi", "nested-lookup"],
                     "dev_NuclearEnvelop": ["scikit-image", "read-roi", "nested-lookup"]},
   "dependencies": ["https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html"]
@@ -46,13 +46,13 @@ if 'dev' in api.TAG:
         sys.path.append('D:\\Documents\\code\\ImJoy_dev\\rna-loc')
     else:
        sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
+
     import rnaloc
     importlib.reload(rnaloc)
+
     from rnaloc import LOCtoolbox
-    import inspect
-    print(inspect.getfile(LOCtoolbox))
-       
     
+       
 
 # Install code from GitHub [In case this should be private, download from Dropbox would also be possible]
 else:
@@ -68,6 +68,8 @@ else:
     #os.remove(name_zip)
     #sys.path.append(os.path.join('.','src'))
 
+import inspect
+print(inspect.getfile(LOCtoolbox))
 
 class PythonPlugin():
 
