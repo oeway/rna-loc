@@ -11,7 +11,7 @@ setup(
       packages=find_packages(),
       include_package_data=True,
       install_requires=[
-          'numpy',
+          'numpy == 1.15.0',
           'scikit-image',
           'nested_lookup',
           'read-roi',
