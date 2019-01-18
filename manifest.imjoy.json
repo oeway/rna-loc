@@ -5,170 +5,29 @@
  "uri_root": "/imjoy-plugins",
  "plugins": [
   {
-   "name": "MembraneDistance Progress",
-   "mode": "window",
+   "name": "MembraneDistProgress",
+   "type": "window",
    "tags": [],
    "ui": "UI for Untitled Plugin",
    "version": "0.1.0",
-   "api_version": "0.1.1",
+   "api_version": "0.1.2",
    "description": "describe your plugin here.",
    "icon": "extension",
    "inputs": null,
    "outputs": null,
+   "runnable": false,
    "env": "",
    "requirements": [
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
-    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
     "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://unpkg.com/spectre.css/dist/spectre.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
+    "https://www.w3schools.com/w3css/4/w3.css",
+    "https://www.w3schools.com/lib/w3-theme-indigo.css"
    ],
    "dependencies": [],
    "defaults": {
-    "w": 7,
-    "h": 7
+    "w": 15,
+    "h": 12
    },
-   "uri": "dev\\MembraneDistance Progress_3q6nww1zuy.imjoy.html"
-  },
-  {
-   "name": "MembraneDistance Progress",
-   "mode": "window",
-   "tags": [],
-   "ui": "UI for Untitled Plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "describe your plugin here.",
-   "icon": "extension",
-   "inputs": null,
-   "outputs": null,
-   "env": "",
-   "requirements": [
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
-    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://unpkg.com/spectre.css/dist/spectre.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
-   ],
-   "dependencies": [],
-   "defaults": {
-    "w": 7,
-    "h": 7
-   },
-   "uri": "dev\\MembraneDistance Progress_c9kzyaoeh4.imjoy.html"
-  },
-  {
-   "name": "MembraneDistance",
-   "mode": "pyworker",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "Plugin to analyze enrichment of RNAs relative to cellular membranes.",
-   "tags": [
-    "CellMemb",
-    "NuclearEnvelop",
-    "dev_CellMemb",
-    "dev_NuclearEnvelop"
-   ],
-   "ui": [
-    {
-     "dZ": {
-      "id": "dZ",
-      "type": "string",
-      "placeholder": 20
-     }
-    }
-   ],
-   "inputs": null,
-   "outputs": null,
-   "icon": "border_outer",
-   "env": {
-    "CellMemb": "conda create -n rnaloc python=3.6",
-    "NuclearEnvelop": "conda create -n rnaloc python=3.6"
-   },
-   "requirements": {
-    "CellMemb": [
-     "git+https://github.com/muellerflorian/rna-loc.git",
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "NuclearEnvelop": [
-     "git+https://github.com/muellerflorian/rna-loc.git",
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "CellMemb_dev": [
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "NuclearEnvelop_dev": [
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ]
-   },
-   "dependencies": [],
-   "uri": "dev\\MembraneDistance.imjoy.html"
-  },
-  {
-   "name": "MembraneDistance",
-   "mode": "pyworker",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "Plugin to analyze enrichment of RNAs relative to cellular membranes.",
-   "tags": [
-    "CellMemb",
-    "NuclearEnvelop",
-    "dev_CellMemb",
-    "dev_NuclearEnvelop"
-   ],
-   "ui": [
-    {
-     "dZ": {
-      "id": "dZ",
-      "type": "string",
-      "placeholder": 20
-     }
-    }
-   ],
-   "inputs": null,
-   "outputs": null,
-   "icon": "border_outer",
-   "env": {
-    "CellMemb": "conda create -n rnaloc python=3.6",
-    "NuclearEnvelop": "conda create -n rnaloc python=3.6"
-   },
-   "requirements": {
-    "CellMemb": [
-     "git+https://github.com/muellerflorian/rna-loc.git",
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "NuclearEnvelop": [
-     "git+https://github.com/muellerflorian/rna-loc.git",
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "dev_CellMemb": [
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ],
-    "dev_NuclearEnvelop": [
-     "scikit-image",
-     "read-roi",
-     "nested-lookup"
-    ]
-   },
-   "dependencies": [],
-   "uri": "dev\\MembraneDistance_j05yol4349.imjoy.html"
+   "uri": "imjoy-plugins/MembraneDistProgress.imjoy.html"
   },
   {
    "name": "MembraneDistance",
@@ -225,32 +84,7 @@
    "dependencies": [
     "https://raw.githubusercontent.com/muellerflorian/rna-loc/master/imjoy-plugins/MembraneDistProgress.imjoy.html"
    ],
-   "uri": "imjoy-plugins\\MembraneDistance.imjoy.html"
-  },
-  {
-   "name": "MembraneDistProgress",
-   "type": "window",
-   "tags": [],
-   "ui": "UI for Untitled Plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "description": "describe your plugin here.",
-   "icon": "extension",
-   "inputs": null,
-   "outputs": null,
-   "runnable": false,
-   "env": "",
-   "requirements": [
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://www.w3schools.com/w3css/4/w3.css",
-    "https://www.w3schools.com/lib/w3-theme-indigo.css"
-   ],
-   "dependencies": [],
-   "defaults": {
-    "w": 15,
-    "h": 12
-   },
-   "uri": "imjoy-plugins\\MembraneDistProgress.imjoy.html"
+   "uri": "imjoy-plugins/MembraneDistance.imjoy.html"
   }
  ],
  "collections": []
