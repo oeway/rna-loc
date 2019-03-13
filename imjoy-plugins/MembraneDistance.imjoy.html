@@ -51,8 +51,8 @@ if 'dev' in api.TAG:
     importlib.reload(rnaloc)
 
     from rnaloc import LOCtoolbox
-    
-       
+
+
 
 # Install code from GitHub [In case this should be private, download from Dropbox would also be possible]
 else:
@@ -187,8 +187,7 @@ class PythonPlugin():
 
     # Show plot in ImJoy interface
     def update_progress(self, data):
-        api.updateWindow({'id': self.windowId, 'data': data})
-
+        self.windowId.run({'data': data})
 
     ### Update ui
     def update_ui(self):
