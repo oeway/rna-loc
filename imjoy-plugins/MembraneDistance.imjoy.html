@@ -1,4 +1,4 @@
-﻿<docs lang="markdown">
+<docs lang="markdown">
 Plugin to analyze enrichment of RNAs relative to cellular membranes.
 </docs>
 
@@ -43,9 +43,9 @@ if 'dev' in api.TAG:
     print(f'Development version on host: {hostname}')
 
     if hostname == "DESKTOP-U9QO0OG":
-        sys.path.append('D:\\Documents\\code\\ImJoy_dev\\rna-loc')
+        sys.path.insert(0,'D:\\Documents\\code\\ImJoy_dev\\rna-loc')
     else:
-       sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
+       sys.path.insert(0,'/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
 
     import rnaloc
     importlib.reload(rnaloc)
@@ -142,7 +142,7 @@ class PythonPlugin():
         self._config = my.config
         self.analyze_enrichment(file_open)
 
-        api.showStatus('Membrane Enrichment Plugin: FINSIHED!')
+        api.showStatus('Membrane Enrichment Plugin: FINISHED!')
 
 
     ## OBSOLETE: Functions for actual analysis

@@ -96,7 +96,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         annotatFiles = annotDict['roi']['cells']
         maskDict = binaryGen.generate(annotatFiles)
 
-        #Use a loop and the update function to add the mask dictionary to the loaded annotation dictonary\n",
+        # Use a loop and the update function to add the mask dictionary to the loaded annotation dictionary
         for k, v in annotatFiles.items():
             v.update(maskDict[k])
 
@@ -175,7 +175,7 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
 
         # Plot results
         name_save = os.path.join(path_save,f'Z-{Zmask}.png')
-        plot_results_slice(Zmask,v,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plots)
+        plot_results_slice(Zmask,v_annot,mask_all,spots_loop_XY,dist_membr,hist_plot,name_save,show_plots)
 
 
 
