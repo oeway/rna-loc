@@ -96,6 +96,8 @@ class BinaryMaskGenerator(MaskGenerator):
 
             # Get dimensions of image and created masks of same size
             image_size = annot_data['image'].shape
+            print(f'image size: {image_size}')
+
 
             # Filled masks and edge mask for polygons
             mask_fill = np.zeros(image_size, dtype=np.uint8)
@@ -111,8 +113,12 @@ class BinaryMaskGenerator(MaskGenerator):
                     (image_size[0], image_size[1], len(roi_dict)), dtype=np.bool)
 
             # Image used to draw lines - for edge mask for freelines
-            im_freeline = Image.new('1', image_size, color=0)
+            #  Size – 2-tuple, containing (width, height) in pixels.
+            im_freeline = Image.new('1', (image_size[1],image_size[0]), color=0)
             draw = ImageDraw.Draw(im_freeline)
+
+            width, height = im_freeline.size
+            print(f'image size edge-freeline (h,w): {height}, {width}')
 
             # Loop over all roi
             i_roi = 0
@@ -133,7 +139,7 @@ class BinaryMaskGenerator(MaskGenerator):
                         draw.line(line_pos, fill=1, width=self.erose_size)
 
                 # freehand - polygon
-                elif roi['type'] == 'freehand' or roi['type'] == 'polygon' or roi['type'] == 'polyline':
+                elif roi['type'] == 'freehand' or roi['type'] == 'polygon' or roi['type'] == 'polyline' or roi['type'] == 'traced':
 
                     # Draw polygon
                     rr, cc = drawSK.polygon(roi_pos[:, 0], roi_pos[:, 1])
@@ -195,6 +201,13 @@ class BinaryMaskGenerator(MaskGenerator):
 
                 # For edge - consider also freeline edge mask
                 mask_edge = mask_edge.astype('bool')
+                
+                image_size = mask_edge.shape
+                print(f'image size edge: {image_size}')
+
+                image_size = mask_edge_freeline.shape
+                print(f'image size edge-freeline: {image_size}')
+                
                 mask_edge = np.logical_or(mask_edge, mask_edge_freeline)
 
                 # Assign to dictionary for return
@@ -216,8 +229,8 @@ class BinaryMaskGenerator(MaskGenerator):
                 maskDict[annot_key]['mask_edge_indiv'] = np.zeros(image_size+(1,), dtype=np.uint8)
                 maskDict[annot_key]['mask_fill_indiv'] = np.zeros(image_size+(1,), dtype=np.uint8)
 
-            else:
-                raise NotImplementedError('No mask has been created.')
+            #else:
+                #raise NotImplementedError('No mask has been created.')
 
         return maskDict
 

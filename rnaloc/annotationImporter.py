@@ -151,6 +151,7 @@ class FolderImporter(AnnotationImporter):
                         # Load image
                         file_path = os.path.join(folder_data, file_name)
                         img_load = io.imread(file_path)
+                        
 
                         # Load annotation
                         if self.annotDict['config']['annot_type'] == 'imagej':
@@ -169,17 +170,20 @@ class FolderImporter(AnnotationImporter):
 
                         # Simplify dictionary & get size of ROIS
                         roi_dict = {}
+                        
+                        
                         for k, v in roi_dict_complete.items():
 
-                            # Simplified dictionary: coordinates and annotation type
-                            roi_dict[k] = {}
-                            roi_dict[k]['pos'] = np.column_stack((v['y'], v['x']))
-                            roi_dict[k]['type'] = v['type']
-
-                            # Store size of regions
-                            roi_size_all[key_channel].append(
-                            [roi_dict[k]['pos'][:, 0].max() - roi_dict[k]['pos'][:, 0].min(),
-                             roi_dict[k]['pos'][:, 1].max() - roi_dict[k]['pos'][:, 1].min()])
+                            if 'x' in v:                   
+                                # Simplified dictionary: coordinates and annotation type
+                                roi_dict[k] = {}
+                                roi_dict[k]['pos'] = np.column_stack((v['y'], v['x']))
+                                roi_dict[k]['type'] = v['type']
+    
+                                # Store size of regions
+                                roi_size_all[key_channel].append(
+                                [roi_dict[k]['pos'][:, 0].max() - roi_dict[k]['pos'][:, 0].min(),
+                                 roi_dict[k]['pos'][:, 1].max() - roi_dict[k]['pos'][:, 1].min()])
 
                         # Assign to dictionary
                         annotDict[key_categ][key_channel][file_name] = {

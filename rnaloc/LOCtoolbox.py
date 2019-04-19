@@ -96,10 +96,24 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         annotatFiles = annotDict['roi']['cells']
         maskDict = binaryGen.generate(annotatFiles)
 
-        # Use a loop and the update function to add the mask dictionary to the loaded annotation dictionary
-        for k, v in annotatFiles.items():
-            v.update(maskDict[k])
 
+        
+
+        # Use a loop and the update function to add the mask dictionary to the loaded annotation dictionary
+        print(maskDict.keys())
+        keys_delete = []
+        for k, v in annotatFiles.items():
+            
+            # Make sure that key in present in mask, otherwise delete
+            if k in maskDict:
+                v.update(maskDict[k])
+                
+            else:
+                keys_delete.append(k) 
+                
+        
+        print(keys_delete)
+        
     # Bins of histogram
     binsHist = np.arange(bin_prop[0],bin_prop[1],bin_prop[2])
     width = 0.8 * (binsHist[1] - binsHist[0])
