@@ -8,7 +8,7 @@ Created on Thu Oct  4 17:43:47 2018
 
 # Imports
 import matplotlib as mpl
-mpl.use('Agg')
+#mpl.use('Agg')
 
 import matplotlib.pyplot as plt
 
@@ -37,8 +37,7 @@ class NumpyEncoder(json.JSONEncoder):
 def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={'cells':'C3-'},data_category={'roi':''},annotation_extension ='__RoiSet.zip',img_extension='.tif',show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None):
     '''
     Function uses annotations generated in FIJI and creates mask based
-    on the specified parameters. The resulting files are zipped and be
-    used for training of a neural network with ImJoy.
+    on the specified parameters. 
 
     Args:
 
@@ -96,8 +95,6 @@ def process_file(FQ_file, img_size = (960,960), bin_prop = (0,90,20), channels={
         annotatFiles = annotDict['roi']['cells']
         maskDict = binaryGen.generate(annotatFiles)
 
-
-        
 
         # Use a loop and the update function to add the mask dictionary to the loaded annotation dictionary
         print(maskDict.keys())
