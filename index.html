@@ -217,6 +217,8 @@
 
       
         
+      
+        
   
   
     
@@ -368,15 +370,27 @@
       
 
 
+  <li class="md-nav__item">
+    <a href="tools/" title="Analysis tools" class="md-nav__link">
+      Analysis tools
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
-    <label class="md-nav__link" for="nav-2">
+    <label class="md-nav__link" for="nav-3">
       RNA localization
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
+      <label class="md-nav__title" for="nav-3">
         RNA localization
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -389,14 +403,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
     
-    <label class="md-nav__link" for="nav-2-1">
-      Membrane distance
+    <label class="md-nav__link" for="nav-3-1">
+      Cell Membrane distance
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-2-1">
-        Membrane distance
+      <label class="md-nav__title" for="nav-3-1">
+        Cell Membrane distance
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -466,13 +480,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-3">
+    <label class="md-nav__link" for="nav-4">
       About
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+      <label class="md-nav__title" for="nav-4">
         About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -572,19 +586,17 @@
                 
                 
                 <h1 id="rna-localization-in-smfish-images">RNA localization in smFISH images<a class="headerlink" href="#rna-localization-in-smfish-images" title="Permanent link">&para;</a></h1>
-<p>This is a collection of analysis tools to study RNA localization from smFISH images.
- We provide different analysis workflows (you can select them also from the banners). For each we specify the requirements and the required installations. We use a number of different open-source software packages, and detail their usage in this documentation.</p>
-<ul>
-<li><a href="membraneDistance/memb-overview/"><strong>Calculate RNA distance distributions to membranes</strong></a></li>
-</ul>
+<p>This is a collection of analysis tools to study RNA localization from smFISH images.</p>
+<p>We provide different analysis workflows (you can select them from the banners). For each we specify the requirements and the required installations. We use a number of different open-source software packages, and detail their usage in this documentation.</p>
 <h2 id="imjoy">ImJoy<a class="headerlink" href="#imjoy" title="Permanent link">&para;</a></h2>
 <p><a href="https://imjoy.io/docs/#/"><strong>ImJoy</strong></a> is image processing platform with an easy to use interface powered by a Python engine running in the background. ImJoy plays a central role in most analysis workflows.</p>
 <p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
 <h3 id="working-with-imjoy">Working with ImJoy<a class="headerlink" href="#working-with-imjoy" title="Permanent link">&para;</a></h3>
-<p>We provide links to install the different ImJoy plugins in dedicated ImJoy workspaces. Once installed, ImJoy remembers the workspaces and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
+<p>We provide links to install the different ImJoy plugins in a dedicated ImJoy workspace. Once installed, ImJoy remembers the workspaces and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
 <p>If you press on the installation link, the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.
 <img
   src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/install_plugin.png" width="600px"></img></p>
+<p>Once installed, ImJoy remembers the installed plugins and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
 <p>Most plugins require the <strong>ImJoy Plugin Engine</strong>, to perform computations in
 Python. You will need to <strong>install</strong> it only once, but <strong>launch</strong> it each time
 you work with ImJoy. For more information for how to install and use the pluging engine, please consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
@@ -613,13 +625,13 @@ detection. Eventually, we would like to implement the main FISH-quant features i
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="membraneDistance/memb-overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="tools/" title="Analysis tools" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Analysis tools
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

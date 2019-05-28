@@ -13,7 +13,7 @@
         <meta name="description" content="An ImJoy plugin to quantify RNA localization patterns">
       
       
-        <link rel="canonical" href="https://muellerflorian.github.io/rna-loc/about/release-notes/">
+        <link rel="canonical" href="https://muellerflorian.github.io/rna-loc/tools/">
       
       
         <meta name="author" content="Florian MUELLER">
@@ -42,13 +42,13 @@
     
     
       
-        <title>Release Notes - RNA localizer</title>
+        <title>Analysis tools - RNA localizer</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -66,7 +66,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
   </head>
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#release-notes" tabindex="1" class="md-skip">
+      <a href="../#tools" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 RNA localizer
               </span>
               <span class="md-header-nav__topic">
-                Release Notes
+                Analysis tools
               </span>
             
           
@@ -202,16 +202,14 @@
       
         
 
-  
-
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Overview" class="md-tabs__link">
+      <a href=".." title="Overview" class="md-tabs__link md-tabs__link--active">
         Overview
       </a>
     
@@ -229,7 +227,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../membraneDistance/memb-overview/" title="RNA localization" class="md-tabs__link">
+        <a href="../membraneDistance/memb-overview/" title="RNA localization" class="md-tabs__link">
           RNA localization
         </a>
       
@@ -244,7 +242,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" title="About" class="md-tabs__link md-tabs__link--active">
+        <a href="../about/release-notes/" title="About" class="md-tabs__link">
           About
         </a>
       
@@ -303,7 +301,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Overview" class="md-nav__link">
+    <a href=".." title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -313,11 +311,69 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../tools/" title="Analysis tools" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Analysis tools
+      </label>
+    
+    <a href="./" title="Analysis tools" class="md-nav__link md-nav__link--active">
       Analysis tools
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fish-quant-rna-detection" title="FISH-quant: RNA detection" class="md-nav__link">
+    FISH-quant: RNA detection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imjoy" title="ImJoy" class="md-nav__link">
+    ImJoy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#working-with-imjoy" title="Working with ImJoy" class="md-nav__link">
+    Working with ImJoy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -365,7 +421,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../membraneDistance/memb-overview/" title="Overview" class="md-nav__link">
+    <a href="../membraneDistance/memb-overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -377,7 +433,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../membraneDistance/memb-analysis/" title="Analysis" class="md-nav__link">
+    <a href="../membraneDistance/memb-analysis/" title="Analysis" class="md-nav__link">
       Analysis
     </a>
   </li>
@@ -389,7 +445,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../membraneDistance/memb-rna-detect/" title="RNA detection" class="md-nav__link">
+    <a href="../membraneDistance/memb-rna-detect/" title="RNA detection" class="md-nav__link">
       RNA detection
     </a>
   </li>
@@ -401,7 +457,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../membraneDistance/memb-todo/" title="To Do" class="md-nav__link">
+    <a href="../membraneDistance/memb-todo/" title="To Do" class="md-nav__link">
       To Do
     </a>
   </li>
@@ -421,12 +477,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       About
@@ -442,63 +496,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Release Notes
-      </label>
-    
-    <a href="./" title="Release Notes" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../about/release-notes/" title="Release Notes" class="md-nav__link">
       Release Notes
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#upgrading" title="Upgrading" class="md-nav__link">
-    Upgrading
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#maintenance-team" title="Maintenance team" class="md-nav__link">
-    Maintenance team
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-001-2018-10-18" title="Version 0.0.1 (2018-10-18)" class="md-nav__link">
-    Version 0.0.1 (2018-10-18)
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -508,7 +510,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../licence/" title="Licence" class="md-nav__link">
+    <a href="../about/licence/" title="Licence" class="md-nav__link">
       Licence
     </a>
   </li>
@@ -540,23 +542,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#upgrading" title="Upgrading" class="md-nav__link">
-    Upgrading
+  <a href="#fish-quant-rna-detection" title="FISH-quant: RNA detection" class="md-nav__link">
+    FISH-quant: RNA detection
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#maintenance-team" title="Maintenance team" class="md-nav__link">
-    Maintenance team
+  <a href="#imjoy" title="ImJoy" class="md-nav__link">
+    ImJoy
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#working-with-imjoy" title="Working with ImJoy" class="md-nav__link">
+    Working with ImJoy
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#version-001-2018-10-18" title="Version 0.0.1 (2018-10-18)" class="md-nav__link">
-    Version 0.0.1 (2018-10-18)
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -577,18 +585,27 @@
               
                 
                 
-                <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
-<hr />
-<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
-<h2 id="maintenance-team">Maintenance team<a class="headerlink" href="#maintenance-team" title="Permanent link">&para;</a></h2>
-<p>The current and past team members.</p>
-<ul>
-<li><a href="https://github.com/muellerflorian/">@muellerflorian</a></li>
-</ul>
-<h2 id="version-001-2018-10-18">Version 0.0.1 (2018-10-18)<a class="headerlink" href="#version-001-2018-10-18" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Initial release</li>
-</ul>
+                <h1 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h1>
+<p>Here we list the tools that are used in the different analysis workflows.</p>
+<h2 id="fish-quant-rna-detection">FISH-quant: RNA detection<a class="headerlink" href="#fish-quant-rna-detection" title="Permanent link">&para;</a></h2>
+<p><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a> is a Matlab toolbox to
+localize RNAs in 3D from smFISH images. FISH-quant is often used to perform the RNA
+detection. Eventually, we would like to implement the main FISH-quant features in ImJoy.</p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/fq-screenshot.png" width="600px"></img></p>
+<h2 id="imjoy">ImJoy<a class="headerlink" href="#imjoy" title="Permanent link">&para;</a></h2>
+<p><a href="https://imjoy.io/docs/#/"><strong>ImJoy</strong></a> is image processing platform with an easy to use interface powered by a Python engine running in the background. ImJoy plays a
+central role in most analysis workflows.</p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/imjoy-screenshot.png" width="600px"></img></p>
+<h3 id="working-with-imjoy">Working with ImJoy<a class="headerlink" href="#working-with-imjoy" title="Permanent link">&para;</a></h3>
+<p>We provide links to install the different ImJoy plugins in dedicated <strong>ImJoy workspaces</strong>.
+Workspaces can be selected from little puzzle symbol in the upper left part of the
+interface.</p>
+<p>Most plugins require the <strong>ImJoy Plugin Engine</strong>, to perform computations in
+Python. You will need to <strong>install</strong> it only once, but <strong>launch</strong> it each time
+you work with ImJoy. For more information for how to install and use the pluging engine, please consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
+<p>Once installed, ImJoy remembers the workspaces and plugins and you simply have to open the web app and select the appropriate workspace <a href="https://imjoy.io/#/app">https://imjoy.io/#/app</a></p>
+<p>If you press on the installation link, the ImJoy web app will open and display a dialog asking if you want to install the specified plugin. To confirm, press the <code>install</code> button.</p>
+<p><img  src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/install_plugin.png" width="600px"></img></p>
                 
                   
                 
@@ -609,7 +626,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../membraneDistance/memb-todo/" title="To Do" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -618,19 +635,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                To Do
+                Overview
               </span>
             </div>
           </a>
         
         
-          <a href="../licence/" title="Licence" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../membraneDistance/memb-overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Licence
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -658,7 +675,7 @@
       
         
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/muellerflorian" class="md-footer-social__link fa fa-github-alt"></a>
     
@@ -675,9 +692,9 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
     
