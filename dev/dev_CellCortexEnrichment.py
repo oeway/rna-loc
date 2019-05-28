@@ -6,8 +6,7 @@ from rnaloc import LOCtoolbox
 #%% Test function with entire analysis workflow 
 file_load =  '/Volumes/PILON_HD2/fmueller/Documents/Data/ImJoy/rna-loc/CellCortexEnrichment/C1-img1__spots.txt'
 
-results_all = LOCtoolbox.process_file(FQ_file=file_load, 
-                        img_size=(960,960),
+results_all = LOCtoolbox.process_file(FQ_file=file_load,                        
                         bin_prop=(0,90,20),
                         channels={'cells':'C3-'},
                         data_category={'roi':''},

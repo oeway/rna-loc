@@ -96,8 +96,6 @@ class BinaryMaskGenerator(MaskGenerator):
 
             # Get dimensions of image and created masks of same size
             image_size = annot_data['image'].shape
-            print(f'image size: {image_size}')
-
 
             # Filled masks and edge mask for polygons
             mask_fill = np.zeros(image_size, dtype=np.uint8)
@@ -117,8 +115,6 @@ class BinaryMaskGenerator(MaskGenerator):
             im_freeline = Image.new('1', (image_size[1],image_size[0]), color=0)
             draw = ImageDraw.Draw(im_freeline)
 
-            width, height = im_freeline.size
-            print(f'image size edge-freeline (h,w): {height}, {width}')
 
             # Loop over all roi
             i_roi = 0
@@ -201,13 +197,6 @@ class BinaryMaskGenerator(MaskGenerator):
 
                 # For edge - consider also freeline edge mask
                 mask_edge = mask_edge.astype('bool')
-                
-                image_size = mask_edge.shape
-                print(f'image size edge: {image_size}')
-
-                image_size = mask_edge_freeline.shape
-                print(f'image size edge-freeline: {image_size}')
-                
                 mask_edge = np.logical_or(mask_edge, mask_edge_freeline)
 
                 # Assign to dictionary for return
