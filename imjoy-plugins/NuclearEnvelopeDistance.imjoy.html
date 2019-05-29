@@ -1,4 +1,4 @@
-﻿<docs lang="markdown">
+<docs lang="markdown">
 [TODO: write documentation for this plugin.]
 </docs>
 
@@ -6,13 +6,13 @@
 {
   "name": "NuclearEnvelopeDistance",
   "type": "native-python",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin to analyze enrichment of RNAs relative to cell membranes.",
-  "tags": ["Stable","dev"],
+  "tags": ["stable","dev"],
   "ui": [
         "dZ: {id: 'dZ', type: 'number', placeholder: 0}",
         "Zmin [pix; 0 for all]: {id: 'Z_min', type: 'number', placeholder: 0}",
-        "Zmax [pix; 0 for all]: {id: 'Z_max', type: 'number', placeholder: 0}",        
+        "Zmax [pix; 0 for all]: {id: 'Z_max', type: 'number', placeholder: 0}",
         "Hist [bins]: {id: 'hist_bins', type: 'string', placeholder: '-100,-50,-10,10,50,100,300'}"
     ],
   "cover": "",
@@ -22,7 +22,7 @@
   "icon": "border_outer",
   "api_version": "0.1.5",
   "env": "conda create -n rnalocalize python=3.6",
-  "requirements": { "Stable":["git+https://github.com/muellerflorian/rna-loc@15dfa4f#egg=rna-loc","scikit-image", "read-roi", "nested-lookup"],
+  "requirements": { "stable":["git+https://github.com/muellerflorian/rna-loc@fa5aac5#egg=rnaloc","scikit-image", "read-roi", "nested-lookup"],
                     "dev": ["scikit-image", "read-roi", "nested-lookup",
                      "pip:  --editable /Volumes/PILON_HD2/fmueller/Documents/code/ImJoy/rna-loc"]},
   "dependencies": ["muellerflorian/rna-loc:MembraneDistProgress"]
@@ -66,7 +66,7 @@ class ImJoyPlugin():
 
         # Specify files
         ret = await api.showFileDialog(type="file",uri_type="path",root=self.root)
-        
+
         if not ret:
             return
 
@@ -78,8 +78,8 @@ class ImJoyPlugin():
                             'name':'Analysis progress',
                             'type':'MembraneDistProgress',
                             'w':17, 'h':15,
-                            'data': {   
-                                "task":"import_annot_categ",                                    
+                            'data': {
+                                "task":"import_annot_categ",
                                 "text":"YES!!!!!!",
                                 "progress":50
                             }
@@ -87,7 +87,7 @@ class ImJoyPlugin():
 
         # Process files
         LOCtoolbox.calc_nuclear_enrichment(
-                        FQ_file=file_open, 
+                        FQ_file=file_open,
                         binsHist=np.fromstring(ctx.config.hist_bins,dtype=int, sep=','),
                         show_plots = False,
                         Zrange=(ctx.config.Z_min,ctx.config.Z_max),
@@ -114,7 +114,7 @@ class ImJoyPlugin():
     # Specify root folder
     async def config_root(self,ctx):
         ret = await api.showFileDialog(uri_type="path",root='~')
-        
+
         if ret:
             root_folder = ret['path']
             if os.path.isdir(root_folder):

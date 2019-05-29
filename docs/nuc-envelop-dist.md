@@ -3,7 +3,7 @@
 Workflow to quantify the distance distribution of RNAs to the cell membrane.
 
 -   [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/): detect RNA positions.
--   **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@Stable"  target="_blank">**here**</a>
+-   **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@stable"  target="_blank">**here**</a>
 
 ImJoy plugins will be available in the  workspace: **`MembDist`**
 
