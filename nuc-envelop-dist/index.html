@@ -13,7 +13,7 @@
         <meta name="description" content="An ImJoy plugin to quantify RNA localization patterns">
       
       
-        <link rel="canonical" href="https://muellerflorian.github.io/rna-loc/membraneDistance/memb-analysis/">
+        <link rel="canonical" href="https://muellerflorian.github.io/rna-loc/nuc-envelop-dist/">
       
       
         <meta name="author" content="Florian MUELLER">
@@ -42,13 +42,13 @@
     
     
       
-        <title>Analysis - RNA localizer</title>
+        <title>Nuclear envelope distance - RNA localizer</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -66,7 +66,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
   </head>
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#quantify-rna-membrane-enrichment-with-imjoy" tabindex="1" class="md-skip">
+      <a href="../#rna-distance-distribution-to-nuclear-envelope" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 RNA localizer
               </span>
               <span class="md-header-nav__topic">
-                Analysis
+                Nuclear envelope distance
               </span>
             
           
@@ -211,7 +211,7 @@
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Overview" class="md-tabs__link">
+      <a href=".." title="Overview" class="md-tabs__link">
         Overview
       </a>
     
@@ -223,19 +223,13 @@
         
   
   
-    
-    
-  
-  
     <li class="md-tabs__item">
       
-        <a href="../memb-overview/" title="RNA localization" class="md-tabs__link md-tabs__link--active">
+        <a href="../cell-membrane-dist/" title="RNA localization" class="md-tabs__link md-tabs__link--active">
           RNA localization
         </a>
       
     </li>
-  
-
   
 
       
@@ -244,7 +238,20 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../about/release-notes/" title="About" class="md-tabs__link">
+        <a href="../image-processing/" title="General workflows" class="md-tabs__link">
+          General workflows
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../release-notes/" title="About" class="md-tabs__link">
           About
         </a>
       
@@ -303,7 +310,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Overview" class="md-nav__link">
+    <a href=".." title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -315,7 +322,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../tools/" title="Analysis tools" class="md-nav__link">
+    <a href="../tools/" title="Analysis tools" class="md-nav__link">
       Analysis tools
     </a>
   </li>
@@ -346,31 +353,10 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
-    
-    <label class="md-nav__link" for="nav-3-1">
-      Cell Membrane distance
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
-        Cell Membrane distance
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
-    <a href="../memb-overview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../cell-membrane-dist/" title="Cell membrane distance" class="md-nav__link">
+      Cell membrane distance
     </a>
   </li>
 
@@ -390,11 +376,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Analysis
+        Nuclear envelope distance
       </label>
     
-    <a href="./" title="Analysis" class="md-nav__link md-nav__link--active">
-      Analysis
+    <a href="./" title="Nuclear envelope distance" class="md-nav__link md-nav__link--active">
+      Nuclear envelope distance
     </a>
     
       
@@ -408,35 +394,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-organization" title="Data organization" class="md-nav__link">
-    Data organization
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multi-channel-conversion" title="Multi-channel conversion" class="md-nav__link">
-    Multi-channel conversion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rna-detection" title="RNA detection" class="md-nav__link">
-    RNA detection
+  <a href="#analysis-overview" title="Analysis overview" class="md-nav__link">
+    Analysis overview
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#annotations-of-cell-membrane" title="Annotations of cell membrane" class="md-nav__link">
-    Annotations of cell membrane
+  <a href="#data-organisation" title="Data organisation" class="md-nav__link">
+    Data organisation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-of-nuclear-envelope" title="Annotations of nuclear envelope" class="md-nav__link">
+    Annotations of nuclear envelope
   </a>
   
     <nav class="md-nav">
@@ -445,13 +418,6 @@
           <li class="md-nav__item">
   <a href="#manual-with-fiji" title="Manual with FIJI" class="md-nav__link">
     Manual with FIJI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automated-with-deeplearning" title="Automated with DeepLearning" class="md-nav__link">
-    Automated with DeepLearning
   </a>
   
 </li>
@@ -477,11 +443,24 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#progress-window" title="Progress window" class="md-nav__link">
-    Progress window
+  <a href="#analysis-options" title="Analysis options" class="md-nav__link">
+    Analysis options
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyze-a-file-and-monitor-progress" title="Analyze a file and monitor progress" class="md-nav__link">
+    Analyze a file and monitor progress
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#stored-results" title="Stored results" class="md-nav__link">
@@ -506,35 +485,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../memb-rna-detect/" title="RNA detection" class="md-nav__link">
-      RNA detection
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../memb-todo/" title="To Do" class="md-nav__link">
-      To Do
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -550,10 +500,58 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      About
+      General workflows
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        General workflows
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../image-processing/" title="Image processing" class="md-nav__link">
+      Image processing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rna-detection/" title="RNA detection" class="md-nav__link">
+      RNA detection
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
         About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -565,7 +563,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../about/release-notes/" title="Release Notes" class="md-nav__link">
+    <a href="../release-notes/" title="Release Notes" class="md-nav__link">
       Release Notes
     </a>
   </li>
@@ -577,7 +575,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../about/licence/" title="Licence" class="md-nav__link">
+    <a href="../licence/" title="Licence" class="md-nav__link">
       Licence
     </a>
   </li>
@@ -609,35 +607,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-organization" title="Data organization" class="md-nav__link">
-    Data organization
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multi-channel-conversion" title="Multi-channel conversion" class="md-nav__link">
-    Multi-channel conversion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rna-detection" title="RNA detection" class="md-nav__link">
-    RNA detection
+  <a href="#analysis-overview" title="Analysis overview" class="md-nav__link">
+    Analysis overview
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#annotations-of-cell-membrane" title="Annotations of cell membrane" class="md-nav__link">
-    Annotations of cell membrane
+  <a href="#data-organisation" title="Data organisation" class="md-nav__link">
+    Data organisation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-of-nuclear-envelope" title="Annotations of nuclear envelope" class="md-nav__link">
+    Annotations of nuclear envelope
   </a>
   
     <nav class="md-nav">
@@ -646,13 +631,6 @@
           <li class="md-nav__item">
   <a href="#manual-with-fiji" title="Manual with FIJI" class="md-nav__link">
     Manual with FIJI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#automated-with-deeplearning" title="Automated with DeepLearning" class="md-nav__link">
-    Automated with DeepLearning
   </a>
   
 </li>
@@ -678,11 +656,24 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#progress-window" title="Progress window" class="md-nav__link">
-    Progress window
+  <a href="#analysis-options" title="Analysis options" class="md-nav__link">
+    Analysis options
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyze-a-file-and-monitor-progress" title="Analyze a file and monitor progress" class="md-nav__link">
+    Analyze a file and monitor progress
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#stored-results" title="Stored results" class="md-nav__link">
@@ -713,21 +704,43 @@
               
                 
                 
-                <h1 id="quantify-rna-membrane-enrichment-with-imjoy">Quantify RNA membrane enrichment with ImJoy<a class="headerlink" href="#quantify-rna-membrane-enrichment-with-imjoy" title="Permanent link">&para;</a></h1>
-<h2 id="data-organization">Data organization<a class="headerlink" href="#data-organization" title="Permanent link">&para;</a></h2>
-<p>We enforce a strict data organization for this analysis. More information
+                <h1 id="rna-distance-distribution-to-nuclear-envelope">RNA distance distribution to nuclear envelope<a class="headerlink" href="#rna-distance-distribution-to-nuclear-envelope" title="Permanent link">&para;</a></h1>
+<p>Workflow to quantify the distance distribution of RNAs to the cell membrane.</p>
+<ul>
+<li><a href="https://bitbucket.org/muellerflorian/fish_quant/"><strong>FISH-quant</strong></a>: detect RNA positions.</li>
+<li><strong>ImJoy</strong>: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@Stable"  target="_blank"><strong>here</strong></a></li>
+</ul>
+<p>ImJoy plugins will be available in the  workspace: <strong><code>MembDist</code></strong></p>
+<p>You also need the Python plugin, please consult the <a href="https://imjoy.io/docs/#/user-manual?id=python-engine">ImJoy documentation</a>.</p>
+<h2 id="analysis-overview">Analysis overview<a class="headerlink" href="#analysis-overview" title="Permanent link">&para;</a></h2>
+<p>For each RNA, we determine the closest distance of an RNA to the nuclear envelope.
+This distance is negative for an RNA inside a nucleus, and positive for an RNA
+outside of a nucleus. Distances for all RNAs will be summarised in histogram. These counts are then normalised as follows:</p>
+<ol>
+<li>Normalisation for complete spatial randomness. There is "more space" away from
+    a nucleus than close to it. This means that for a randomly distributed RNA
+    it is less likely to be close to a nucleus, then being further away. We consider
+    this by calculating a histogram with the distance of all pixels in the embryo
+    to the nuclei. The RNA counts are then normalised with this pixel histogram.</li>
+<li>The normalised histogram is then further normalised such that it sums up to 1.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram.png" width="500px"></img></p>
+<h2 id="data-organisation">Data organisation<a class="headerlink" href="#data-organisation" title="Permanent link">&para;</a></h2>
+<p>We enforce a strict data organisation for this analysis. More information
 about can be found in the dedicated section below.</p>
 <ol>
-<li>One folder per multi-channel image ("parental folder").</li>
+<li>One folder per multi-channel image ('sample folder').</li>
 <li>Each channel is saved as a separate <code>.tif</code> file containing all z-slices. Information
-    for how to convert stacks can be found here are <a href="./#multi-channel-conversion">here</a>.</li>
-<li>RNA molecules are detected with <a href="https://bitbucket.org/muellerflorian/fish_quant">FISH-quant</a>. Analysis results are also stored directly in the parental folder. RNA detection is described in more detail <a href="../memb-rna-detect/">here</a>.</li>
-<li>Membrane annotations are stored in a dedicated subfolder <code>zstack_segmentation</code>.
+    for how to convert stacks can be found here are <a href="../image-processing/#multi-channel-conversion">here</a>.</li>
+<li>RNA molecules are detected with <a href="https://bitbucket.org/muellerflorian/fish_quant">FISH-quant</a>. Analysis results are also stored directly in the sample folder. RNA detection  is described in more detail <a href="../rna-detection/">here</a>. When performing RNA detection with
+    the GMM approach, the GMM results (ending with <code>_res_GMM.txt</code>) has to be copied in the sample folder.</li>
+<li>Annotations of nuclear envelope are stored in a dedicated subfolder <code>zstack_segmentation</code>.
     More information <a href="./#annotations-of-cell-membrane">below</a>.</li>
+<li>The outline of the embryo has to be store as a single FIJI ROI named <code>embryo_contour.roi</code>.</li>
 </ol>
-<p>As an example, we have one image <code>img1</code>  with 3 channels. The first channels contain
-analyzed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).</p>
-<div class="highlight"><pre><span></span>.
+<p>As an example, we have one image <code>img1</code> with 3 channels. The first channels contain
+analysed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).</p>
+<pre><code>.
 ├─ img1/
 │  ├─ C1-img1.tif                          # smFISH image (channel 1)
 │  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
@@ -735,6 +748,7 @@ analyzed smFISH data, the third one contains the cell membrane annotations for t
 │  ├─ C2-img1.tif                          # smFISH image of (channel 2)
 │  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
 │  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
+│  ├─ embryo_contour.roi                   # Embryo outline
 │  ├─ zstack_segmentation/
 │  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
 │  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
@@ -742,23 +756,13 @@ analyzed smFISH data, the third one contains the cell membrane annotations for t
 │  │  ├─ C3-img1_Z8__RoiSet.zip            # Membrane annotation of slice 2
 ├─ img2/
 .
-</pre></div>
-
-<h3 id="multi-channel-conversion">Multi-channel conversion<a class="headerlink" href="#multi-channel-conversion" title="Permanent link">&para;</a></h3>
-<p>The ImJoy plugin and FISH-quant requires that each channel is stored as a separate z-stack, if your images are stored as multi-channel z-stacks you can split these channels with FIJI.</p>
-<ol>
-<li>Create a new folder for each multi-channel image.</li>
-<li>Open image stack (<code>.dv</code>) in FIJI.</li>
-<li>Split channels (FQ only supports mono-channel input images)
-    a. From menu: <code>Image</code> &gt; <code>Color</code> &gt; <code>Split channels</code>
-    a. Save each channels with a unique channel identifier, e.g. <code>C1-</code> or <code>DAPI_</code>.</li>
-</ol>
-<h2 id="rna-detection">RNA detection<a class="headerlink" href="#rna-detection" title="Permanent link">&para;</a></h2>
-<p>Detection of RNAs is performed with FISH-quant and detailed <a href="../memb-rna-detect/">here</a>.</p>
-<h2 id="annotations-of-cell-membrane">Annotations of cell membrane<a class="headerlink" href="#annotations-of-cell-membrane" title="Permanent link">&para;</a></h2>
+</code></pre>
+<h2 id="annotations-of-nuclear-envelope">Annotations of nuclear envelope<a class="headerlink" href="#annotations-of-nuclear-envelope" title="Permanent link">&para;</a></h2>
 <p>In order to be able to compute the enrichment towards cell membrane or nuclear
 envelope, these membranes have to be annotated in EACH z-slice that should be
-considered in the analysis. This annotation can either be done manually, or (<strong>TODO</strong>) <del>automatically with segmentation tools</del>.</p>
+considered in the analysis. This annotation can either be done manually, or
+automatically. If an automated segmentation is performed, make sure that the
+results are stored as described below for the manual annotation.</p>
 <h3 id="manual-with-fiji">Manual with FIJI<a class="headerlink" href="#manual-with-fiji" title="Permanent link">&para;</a></h3>
 <p>Annotations have to be performed and stored as described below.</p>
 <ol>
@@ -770,7 +774,6 @@ considered in the analysis. This annotation can either be done manually, or (<st
 <ul>
 <li><strong>FIJI</strong>. Open the z-stack and go to menu <code>Image</code> &gt; <code>Stack</code> &gt; <code>Stack to images</code>.
     You can then save each image with the according file-name.</li>
-<li><strong>TODO</strong> <del><strong>Automatically</strong></del></li>
 </ul>
 </li>
 <li>
@@ -790,13 +793,19 @@ considered in the analysis. This annotation can either be done manually, or (<st
 <li>If only one region is saved, this will created a file with the extension <code>.roi</code>, if multiple regions will be save this will create a <code>.zip</code> file. As a file-name choose the name of the annotated image, followed by the suffix <code>**__RoiSet.zip**</code>.</li>
 </ol>
 <p><strong>IMPORTANT</strong>: these annotations could be used for training of a neural network. If this is intended, then ALL structures, e.g. nuclei, have to be annotated. Unwanted elements, e.g. nuclei touching the cell border, can be removed in a post-processing step.</p>
-<h3 id="automated-with-deeplearning"><del>Automated with DeepLearning</del><a class="headerlink" href="#automated-with-deeplearning" title="Permanent link">&para;</a></h3>
-<p><strong>TODO</strong>.</p>
 <h2 id="analysis-with-imjoy">Analysis with ImJoy<a class="headerlink" href="#analysis-with-imjoy" title="Permanent link">&para;</a></h2>
-<p>The entire functinality of the plugin can be controlled within the plugin
+<p>The entire functionality of the plugin can be controlled within the plugin
 window. If you expand the plugin, you will see all parameters and operations
 that can be performed</p>
-<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/ui_CellCortex.png" width="350px"></img></p>
+<p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-plugin-ui.png" width="350px"></img></p>
+<h3 id="defining-a-root-folder">Defining a root folder<a class="headerlink" href="#defining-a-root-folder" title="Permanent link">&para;</a></h3>
+<p>By default, ImJoy will open files in your home folder. If your data is at a different
+location, you can set a root folder. Each time you specify a file, ImJoy will open
+the file-dialog in this root folder. Press the button <code>Root folder</code> and specify the
+desired folder.</p>
+<p>The specified root folder is also saved, and will be resused the next time you launch
+ImJoy.</p>
+<h3 id="analysis-options">Analysis options<a class="headerlink" href="#analysis-options" title="Permanent link">&para;</a></h3>
 <p>All options are explained in the Table below. If you change these parameters, the
 changed values will be saved in the browser and reused the next time you launch
 ImJoy.</p>
@@ -813,8 +822,8 @@ ImJoy.</p>
 <tr>
 <td><code>dZ</code></td>
 <td>int</td>
-<td>2</td>
-<td>Number of z-slices that will be used above and below the currently analyzed slice. Specify this value &gt; 0 if not all z-slices are annotated/</td>
+<td>0</td>
+<td>Number of z-slices that will be used above and below the currently analysed slice. Specify this value &gt; 0 if not all z-slices are annotated/</td>
 </tr>
 <tr>
 <td><code>Zmin</code></td>
@@ -829,98 +838,47 @@ ImJoy.</p>
 <td>As <code>Z min</code> but for maximum Z slice.</td>
 </tr>
 <tr>
-<td><code>Channel</code></td>
-<td>str</td>
-<td>'C3-'</td>
-<td>Unique identifier for channel containing annotations.</td>
-</tr>
-<tr>
-<td><code>Hist [bin]</code></td>
-<td>int</td>
-<td>20</td>
-<td>Bin size for histogram to measure membrane enrichment (in nm).</td>
-</tr>
-<tr>
-<td><code>Hist [max]</code></td>
-<td>int</td>
-<td>100</td>
-<td>Maxium value for bins to calculate membrane enrichment.</td>
-</tr>
-<tr>
-<td><code>Image-size [X]</code></td>
-<td>int</td>
-<td>960</td>
-<td>Size of image in X.</td>
-</tr>
-<tr>
-<td><code>Image-size [Y]</code></td>
-<td>int</td>
-<td>960</td>
-<td>Size of image in Y.</td>
+<td><code>Hist [bins]</code></td>
+<td>string</td>
+<td>...</td>
+<td>Defines the edges of the bins that will be used. Values are separated by a comma.</td>
 </tr>
 </tbody>
 </table>
-<p>To analyze a FQ results file, you have to</p>
+<h2 id="analyze-a-file-and-monitor-progress">Analyze a file and monitor progress<a class="headerlink" href="#analyze-a-file-and-monitor-progress" title="Permanent link">&para;</a></h2>
+<p>To analyse a FQ results file, you have to</p>
 <ol>
 <li>Specify the required parameters in the plugin interface.</li>
-<li>Execute plugin with clicking on the Plugin name <code>Membrane Enrichment</code>. This will
-display a file-dialog where you can select the FQ results file that you want to
-analyze (ends with <code>__spots.txt</code>) that should be analyzed.</li>
+<li>Execute plugin with clicking on the Plugin name <code>NuclearEnvelopeEnrichment</code>. This will
+    display a file-dialog where you can select the FQ results file that you want to
+    analyse (ends with <code>__spots.txt</code>) that should be analysed. This can either be a 'regular' FQ detection, or an analysis with a GMM.</li>
 <li>This file will then be processed and the final distance enrichment histogram
-displayed in the interface. More plots and results file will be stored on the disk.</li>
+    displayed in the interface. More plots and results file will be stored on the disk.</li>
 </ol>
-<h3 id="defining-a-root-folder">Defining a root folder<a class="headerlink" href="#defining-a-root-folder" title="Permanent link">&para;</a></h3>
-<p>By default, ImJoy will open files in your home folder. If your data is at a different
-location, you can set a root folder. Each time you specify a file, ImJoy will open
-the file-dialog in this root folder. Press the button <code>Root folder</code> and specify the
-desired folder.</p>
-<p>The specified root folder is also saved, and will be resused the next time you launch
-ImJoy.</p>
-<h3 id="progress-window">Progress window<a class="headerlink" href="#progress-window" title="Permanent link">&para;</a></h3>
-<p>Once you start the analysis, ImJoy will show you a progress window with progressbars
+<p>Once you start the analysis, ImJoy will show you a progress window with progress-bars
 for the different steps. Once done, it will display the final result in this image.</p>
 <p><img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_progress.png" width="450px"></img></p>
 <h3 id="stored-results">Stored results<a class="headerlink" href="#stored-results" title="Permanent link">&para;</a></h3>
-<p>The analysis script will create a new folder with the same name as the selected results file. In this folder it will create a subfolder <code>MembDist_yymmdd-hhmm</code> containing the analysis results. To allow to redo the analysis with different settings, the pluging  will create for each performed analysis a separate folder name with the time-stamp when the analysis was performed (format <code>yymmdd-hhmm</code>). This folder contains several files:</p>
+<p>The analysis script will create a new folder with the same name as the selected results file. To allow to redo the analysis with different settings, the plugin  will create for each performed analysis a separate sub folder <code>NucEnvelopDist_yymmdd-hhmm</code>, where is a time-stamp in the format <code>yymmdd-hhmm</code>. This folder contains several files:</p>
 <ul>
 <li>
 <p><strong>_DistanceEnrichmentSummary.png</strong>: image containing the pooled analysis of all slices
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_summaryPlot.png" width="600px"></img></p>
+    <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram" width="400px"></img></p>
 </li>
 <li>
-<p><strong>_HistogramPooled.csv</strong>: csv file containing the histograms of the RNA-membrane distance pooled from all z-slices. This can be opened with any Spreadsheet application (Excel, LibreOffice, Numbers, ...) and results from different images
-can then be pooled together. It contains the following data</p>
+<p><strong>_HistogramDistances.csv</strong>: csv file containing the histograms of the RNA-membrane distance pooled from all z-slices. This can be opened with any Spreadsheet application (Excel, LibreOffice, Numbers, ...) and results from different images can then be pooled together. It contains the following data</p>
 <ul>
 <li><code>center</code>: center of the bins</li>
+<li><code>width</code>: width of the bins</li>
 <li><code>histRNA_all</code>: raw RNA distance histogram.</li>
-<li><code>histRNA_all_norm</code>: normalized RNA histogram (values add to 1).</li>
-<li><code>histpix_all_norm</code>: normalized distance histogram of all pixels in the cell.</li>
-<li><code>hist_RNA_all_normPix</code>: normalized RNA histogram with the pixel histogram.
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_csv.png" width="450px"></img></li>
-<li><strong>Z-i.png</strong>: results of slice 'i'
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_slicePlot.png" width="600px"></img></li>
+<li><code>histPIX_all</code>: normalized RNA histogram (values add to 1).</li>
+<li><code>histRNA_norm</code>: normalized RNA histogram with the pixel histogram.</li>
 </ul>
 </li>
 <li>
-<p><strong>DataAll.json</strong>: json file containing all analysis results including settings. Can</p>
+<p><strong>DataAll.json</strong>: json file containing all analysis results including settings.</p>
 </li>
 </ul>
-<p>For the example above, we would obtain the following folder structure
-(shows only the relevant part for <code>C1-img1</code>)
-<div class="highlight"><pre><span></span>.
-├─ img1/
-│  ├─ C1-img1.tif                          # smFISH image (channel 1)
-│  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
-│  ├─ C1-img1__settings_MATURE.txt         # FQ detection settings (channel 1)
-│  ├─ C1-img1__spots/
-│  │  ├─ MembDist_181017-1629/
-│  │  │  ├─ _HistogramPooled.csv
-│  │  │  ├─ _DistanceEnrichmentSummary.png
-│  │  │  ├─ DataAll.json
-│  │  │  ├─ Z-1.png
-│  │  │  ├─ Z-2.png
-.
-</pre></div></p>
                 
                   
                 
@@ -941,7 +899,7 @@ can then be pooled together. It contains the following data</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../memb-overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../cell-membrane-dist/" title="Cell membrane distance" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -950,19 +908,19 @@ can then be pooled together. It contains the following data</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Overview
+                Cell membrane distance
               </span>
             </div>
           </a>
         
         
-          <a href="../memb-rna-detect/" title="RNA detection" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../image-processing/" title="Image processing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                RNA detection
+                Image processing
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -990,7 +948,7 @@ can then be pooled together. It contains the following data</p>
       
         
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/muellerflorian" class="md-footer-social__link fa fa-github-alt"></a>
     
@@ -1007,9 +965,9 @@ can then be pooled together. It contains the following data</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
     
