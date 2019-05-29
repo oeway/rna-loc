@@ -1,19 +1,19 @@
-# RNA detection in smFISH images
+# RNA detection with FISH-quant
 
-Two options exist, you can either directly analyze the smFISH channels in FQ to
-detect individual RNAs, ~~or you can use a Matlab script that detect individual RNA
-molecule but also decomposes RNA aggregates into individual RNAs with a Gaussian
-Mixture Model (GMM)~~.
+Two options exist, you can either directly analyse the smFISH channels in FQ to
+detect individual RNAs, or you can use a Matlab script to detect individual RNA
+molecule and then decomposes RNA aggregates into individual RNAs with a Gaussian
+Mixture Model (GMM).
 
 ## Detection of individual RNAs
 
 Below only a quick summary of the workflow is presented. For more details consult
-the [FQ manual](<>).
+the [FQ manual](https://bitbucket.org/muellerflorian/fish_quant/src/master/Documentation/FISH_QUANT_v3.pdf).
 
 1.  Open FQ
-2.  Set analysis folder to folder containing the image that should be analyzed:
+2.  Set analysis folder to folder containing the image that should be analysed:
     `Menu Folder` > `Set root folder`)
-3.  Open image that should be analyzed.
+3.  Open image that should be analysed.
 4.  Draw outline of embryo / cells:
     1.  Open dedicated interface: 	Button	`Define outlines`
     2.  Draw a new cell: Button	`New cell`
@@ -50,25 +50,49 @@ the [FQ manual](<>).
 12. Depending on which analysis you want to perform, you either save the detection
     results or only the specified cell outline
 13. If you are satisfied with these detection results, you can save them directly:  `[FQ] Main`>`Save`>`Save ???`
-14. If you would like to also analyze RNA aggregates, you can save only the outline: `[FQ] Main`>`Save`>`Save ???`
+14. If you would like to also analyse RNA aggregates, you can save only the outline: `[FQ] Main`>`Save`>`Save ???`
 
-## ~~Detection of clustered RNAs~~ **TODO**
+## Detection of clustered RNAs
+Her we use an approach that detects individual RNAs and then decomposes aggregates into individual RNAs (for more information see our [Nat Communications paper](https://www.nature.com/articles/s41467-018-06868-w).This requires that the detection of individual RNA as described above has been performed.
 
-~~After performing the steps above you will have two text files (1) the cell outline,
-(2) FQ detection settings. We provide a Matlab script `WRAPPER_analyze_smFISH__EXP_v1.m`
-which detects individual RNAs and then decomposes aggregates into individual RNAs
-(for more information see our [Nat Communications paper](ToBeAdded)). This
-script allows batch-processing and multiple images can be analyzed together, where image is processed with its dedicated outline and settings. This can be done with the Matlab script. This script recursively searches a user-defined parental folder for folders containing FQ outline and settings files. These folders will then be processed and RNA detection performed, sub-folders will containing different analysis results will be created.~~
+After performing the steps above you will have two text files (1) the cell outline,
+(2) FQ detection settings. The latter can be for an entire experiment or for individual
+outline files. Depending on how your data is organised a different workflow below
+will be adequate
 
--   `results_GMM` contains the RNA detection with the GMM (to decompose foci into
-    individual RNAs). The most important files are the text files ending
-    with `_res_GMM.txt` containing the RNA detection results, which will be used
-    to perform the co-localization. The folder further contains a subfolder `#plots`
-    with a PDF showing the results of the GMM detection. Individual RNAs are
-     shown in green, decomposed foci with a red number indicating how many RNAs
-    were estimated to be in each foci.
--   `results_noGMM` contains the RNA detection results without the GMM.
+### Outline specific detection settings
+Here, each outline has it's own settings file. We provide a script [`WRAPPER_smFISH__GMM_v1.m`](https://bitbucket.org/muellerflorian/fish_quant/src/master/locFISH/WRAPPER_smFISH__GMM_v1.m) on the FQ bitbucket repository to analyse these data.
+1. It requires that images, outlines, and settings are in the same folder.
+2. You have to specify a string that identifies outline files, and a  string that
+ identifies the settings files. Importantly, replacing one string by the other should
+ then yield the respective other files.
+3. The script will then loop over all outlines, and process them with the GMM approach
+4. Results will stored in a newly created folder with the same name as the outline file.
+  Here two subfolders are created,
+  -   `results_GMM` contains the RNA detection with the GMM (to decompose foci into
+      individual RNAs). The most important files are the text files ending
+      with `_res_GMM.txt` containing the RNA detection results, which will be used
+      to perform the co-localisation. The folder further contains a subfolder `#plots`
+      with a PDF showing the results of the GMM detection. Individual RNAs are
+       shown in green, decomposed foci with a red number indicating how many RNAs
+      were estimated to be in each foci.
+  -   `results_noGMM` contains the RNA detection results without the GMM.
 
-**Note**. The script also computes localization features that are not necessary
-for this analysis. To avoid this computation you can specify the line where
-the parameters for this analysis are set toS
+In the example below, the strings would be `outlines.txt` for outlines, and
+`settings_MATURE.txt` for the settings. It also shows the newly created folder,
+containing the GMM results.
+
+```
+.
+├─ fish_data/
+│  ├─ exp1_ch1_pos01.tif                  # smFISH image
+│  ├─ exp1_ch1_pos01__outlines.txt         # FQ outlines results
+│  ├─ exp1_ch1_pos01__settings_MATURE.txt  # FQ detection settings
+│  ├─ exp1_ch1_pos01__spots.txt            # FQ spot detection
+│  ├─ exp1_ch1_pos01__outlines/
+│     ├─ exp1_ch1_pos01__outlines/
+│        ├─ results_GMM
+│           ├─ exp1_ch1_pos01_res_GMM.txt
+│           ├─ ...
+.
+```

@@ -44,10 +44,10 @@ about can be found in the dedicated section below.
 1.  One folder per sample ("parental folder"). Images have to be stored as
     individual channels. More details for how to convert images are [here](image-processing.md#multi-channel-conversion).
 2.  Each channel is saved as a separate `.tif` file containing all z-slices. Information
-    for how to convert stacks can be found here are [here](memb-analysis.md#multi-channel-conversion).
-3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the parental folder. RNA detection is described in more detail [here](rna-detect.md).
+    for how to convert stacks can be found here are [here](image-processing.md#multi-channel-conversion).
+3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the parental folder. RNA detection is described in more detail [here](rna-detection.md).
 4.  Membrane annotations are stored in a dedicated subfolder `zstack_segmentation`.
-    More information [below](memb-analysis.md#annotations-of-cell-membrane).
+    More information [below](cell-membrane-dist.md#annotations-of-cell-membrane).
 
 As an example, we have one image `img1`  with 3 channels. The first channels contain
 analysed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
@@ -82,7 +82,7 @@ The ImJoy plugin and FISH-quant requires that each channel is stored as a separa
 
 ## RNA detection
 
-Detection of RNAs is performed with FISH-quant and detailed [here](memb-rna-detect.md).
+Detection of RNAs is performed with FISH-quant and detailed [here](rna-detection.md).
 
 ## Annotations of cell membrane
 

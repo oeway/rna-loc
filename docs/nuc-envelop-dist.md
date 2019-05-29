@@ -1,8 +1,9 @@
 # RNA distance distribution to nuclear envelope
+
 Workflow to quantify the distance distribution of RNAs to the cell membrane.
 
-* [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/) to detect RNA positions.
-* **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@Stable"  target="_blank">**here**</a>
+-   [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/): detect RNA positions.
+-   **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@Stable"  target="_blank">**here**</a>
 
 ImJoy plugins will be available in the  workspace: **`MembDist`**
 
@@ -12,54 +13,50 @@ You also need the Python plugin, please consult the [ImJoy documentation](https:
 
 For each RNA, we determine the closest distance of an RNA to the nuclear envelope.
 This distance is negative for an RNA inside a nucleus, and positive for an RNA
-outside of a nucleus.
+outside of a nucleus. Distances for all RNAs will be summarised in histogram. These counts are then normalised as follows:
 
-Distances for all RNAs will be summarised in histogram. These counts are then normalised
-as follows
-1. Normalisation for complete spatial randomness. There is "more space" away from
-  a nucleus than close to it. This means that for a randomly distributed RNA
-  it is less likely to be close to a nucleus, then being further away. We consider
-  this by calculating a histogram with the distance of all pixels in the embryo
-  to the nuclei. The RNA counts are then normalised with this pixel histogram.
-2. The normalised histogram is then further normalised such that it sums up to 1.
+1.  Normalisation for complete spatial randomness. There is "more space" away from
+    a nucleus than close to it. This means that for a randomly distributed RNA
+    it is less likely to be close to a nucleus, then being further away. We consider
+    this by calculating a histogram with the distance of all pixels in the embryo
+    to the nuclei. The RNA counts are then normalised with this pixel histogram.
+2.  The normalised histogram is then further normalised such that it sums up to 1.
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram.png" width="400px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram.png" width="500px"></img>
 
 ## Data organisation
 
 We enforce a strict data organisation for this analysis. More information
 about can be found in the dedicated section below.
 
-1.  One folder per multi-channel image ("parental folder").
+1.  One folder per multi-channel image ('sample folder').
 2.  Each channel is saved as a separate `.tif` file containing all z-slices. Information
     for how to convert stacks can be found here are [here](image-processing.md#multi-channel-conversion).
-3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the parental folder. RNA detection is described in more detail [here](rna-detection.md). RNA detection can be performed either
- with the standard approach or the 'GMM' to decompose brighter foci in individual RNAs.
+3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the sample folder. RNA detection  is described in more detail [here](rna-detection.md). When performing RNA detection with
+    the GMM approach, the GMM results (ending with `_res_GMM.txt`) has to be copied in the sample folder.
 4.  Annotations of nuclear envelope are stored in a dedicated subfolder `zstack_segmentation`.
-    More information [below](memb-analysis.md#annotations-of-cell-membrane).
-5. The outline of the embryo has to be store as a single FIJI ROI named `embryo_contour.roi`.
+    More information [below](nuc-envelop-dist.md#annotations-of-cell-membrane).
+5.  The outline of the embryo has to be store as a single FIJI ROI named `embryo_contour.roi`.
 
-As an example, we have one image `img1`  with 3 channels. The first channels contain
+As an example, we have one image `img1` with 3 channels. The first channels contain
 analysed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
 
-```
-.
-├─ img1/
-│  ├─ C1-img1.tif                          # smFISH image (channel 1)
-│  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
-│  ├─ C1-img1__settings_MATURE.txt         # FQ detection settings (channel 1)
-│  ├─ C2-img1.tif                          # smFISH image of (channel 2)
-│  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
-│  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
-│  ├─ embryo_contour.roi                   # Embryo outline
-│  ├─ zstack_segmentation/
-│  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
-│  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
-│  │  ├─ C3-img1_Z8.tif                    # Image of z-slice 2
-│  │  ├─ C3-img1_Z8__RoiSet.zip            # Membrane annotation of slice 2
-├─ img2/
-.
-```
+    .
+    ├─ img1/
+    │  ├─ C1-img1.tif                          # smFISH image (channel 1)
+    │  ├─ C1-img1__spots.txt                   # FQ detection results (channel 1)
+    │  ├─ C1-img1__settings_MATURE.txt         # FQ detection settings (channel 1)
+    │  ├─ C2-img1.tif                          # smFISH image of (channel 2)
+    │  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
+    │  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
+    │  ├─ embryo_contour.roi                   # Embryo outline
+    │  ├─ zstack_segmentation/
+    │  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
+    │  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
+    │  │  ├─ C3-img1_Z8.tif                    # Image of z-slice 2
+    │  │  ├─ C3-img1_Z8__RoiSet.zip            # Membrane annotation of slice 2
+    ├─ img2/
+    .
 
 ## Annotations of nuclear envelope
 
@@ -108,6 +105,7 @@ that can be performed
 <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-plugin-ui.png" width="350px"></img>
 
 ### Defining a root folder
+
 By default, ImJoy will open files in your home folder. If your data is at a different
 location, you can set a root folder. Each time you specify a file, ImJoy will open
 the file-dialog in this root folder. Press the button `Root folder` and specify the
@@ -116,29 +114,29 @@ desired folder.
 The specified root folder is also saved, and will be resused the next time you launch
 ImJoy.
 
-
 ### Analysis options
+
 All options are explained in the Table below. If you change these parameters, the
 changed values will be saved in the browser and reused the next time you launch
 ImJoy.
 
-Option           | Type | Default     | Description
----------------- | ---- | ----------- | -----------
-`dZ`             | int  | 0 | Number of z-slices that will be used above and below the currently analysed slice. Specify this value > 0 if not all z-slices are annotated/
-`Zmin`           | int  | 0 | Specify at which Z slice analysis should start. Value of 0 means that entire z-stack will be processed.
-`Zmax`           | int  | 0 | As `Z min` but for maximum Z slice.
-`Hist [bins]`    | string  |  ... | Defines the edges of the bins that will be used. Values are separated by a comma.
+| Option        | Type   | Default | Description                                                                                                                                  |
+| ------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dZ`          | int    | 0       | Number of z-slices that will be used above and below the currently analysed slice. Specify this value > 0 if not all z-slices are annotated/ |
+| `Zmin`        | int    | 0       | Specify at which Z slice analysis should start. Value of 0 means that entire z-stack will be processed.                                      |
+| `Zmax`        | int    | 0       | As `Z min` but for maximum Z slice.                                                                                                          |
+| `Hist [bins]` | string | ...     | Defines the edges of the bins that will be used. Values are separated by a comma.                                                            |
 
 ## Analyze a file and monitor progress
 
 To analyse a FQ results file, you have to
 
-1. Specify the required parameters in the plugin interface.
-0. Execute plugin with clicking on the Plugin name `NuclearEnvelopeEnrichment`. This will
-display a file-dialog where you can select the FQ results file that you want to
-analyse (ends with `__spots.txt`) that should be analysed. This can either be a 'regular' FQ detection, or an analysis with a GMM.
-0. This file will then be processed and the final distance enrichment histogram
-displayed in the interface. More plots and results file will be stored on the disk.
+1.  Specify the required parameters in the plugin interface.
+2.  Execute plugin with clicking on the Plugin name `NuclearEnvelopeEnrichment`. This will
+    display a file-dialog where you can select the FQ results file that you want to
+    analyse (ends with `__spots.txt`) that should be analysed. This can either be a 'regular' FQ detection, or an analysis with a GMM.
+3.  This file will then be processed and the final distance enrichment histogram
+    displayed in the interface. More plots and results file will be stored on the disk.
 
 Once you start the analysis, ImJoy will show you a progress window with progress-bars
 for the different steps. Once done, it will display the final result in this image.
@@ -146,16 +144,18 @@ for the different steps. Once done, it will display the final result in this ima
 <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_progress.png" width="450px"></img>
 
 ### Stored results
+
 The analysis script will create a new folder with the same name as the selected results file. To allow to redo the analysis with different settings, the plugin  will create for each performed analysis a separate sub folder `NucEnvelopDist_yymmdd-hhmm`, where is a time-stamp in the format `yymmdd-hhmm`. This folder contains several files:
+
 -   **\_DistanceEnrichmentSummary.png**: image containing the pooled analysis of all slices
-   <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram" width="400px"></img>
+    <img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/NED-dist_histogram" width="400px"></img>
 
 -   **\_HistogramDistances.csv**: csv file containing the histograms of the RNA-membrane distance pooled from all z-slices. This can be opened with any Spreadsheet application (Excel, LibreOffice, Numbers, ...) and results from different images can then be pooled together. It contains the following data
 
-    - `center`: center of the bins
-    - `width`: width of the bins
-    - `histRNA_all`: raw RNA distance histogram.
-    - `histPIX_all`: normalized RNA histogram (values add to 1).
-    - `histRNA_norm`: normalized RNA histogram with the pixel histogram.
+    -   `center`: center of the bins
+    -   `width`: width of the bins
+    -   `histRNA_all`: raw RNA distance histogram.
+    -   `histPIX_all`: normalized RNA histogram (values add to 1).
+    -   `histRNA_norm`: normalized RNA histogram with the pixel histogram.
 
 -   **DataAll.json**: json file containing all analysis results including settings.
