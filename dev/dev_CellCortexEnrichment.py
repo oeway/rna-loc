@@ -1,7 +1,11 @@
-# Update system path to find pyfishquant
 import sys
-sys.path.append('/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
+sys.path.insert(0,'/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
+
+#%% Update system path to find pyfishquant
+import sys
+sys.path.insert(0,'/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
 from rnaloc import LOCtoolbox
+
 
 #%% Test function with entire analysis workflow 
 file_load =  '/Volumes/PILON_HD2/fmueller/Documents/Data/ImJoy/rna-loc/CellCortexEnrichment/C1-img1__spots.txt'

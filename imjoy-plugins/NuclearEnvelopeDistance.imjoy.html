@@ -23,7 +23,8 @@
   "api_version": "0.1.5",
   "env": "conda create -n rnalocalize python=3.6",
   "requirements": { "Stable":["git+https://github.com/muellerflorian/rna-loc@15dfa4f#egg=rna-loc","scikit-image", "read-roi", "nested-lookup"],
-                    "dev": ["scikit-image", "read-roi", "nested-lookup"]},
+                    "dev": ["scikit-image", "read-roi", "nested-lookup",
+                     "pip:  --editable /Volumes/PILON_HD2/fmueller/Documents/code/ImJoy/rna-loc"]},
   "dependencies": ["muellerflorian/rna-loc:MembraneDistProgress"]
 }
 </config>
@@ -41,31 +42,7 @@ import json
 import copy
 import numpy as np
 
-
-# Development on local machine
-if 'dev' in api.TAG:
-    import socket
-    import importlib
-    hostname = socket.gethostname()
-    print(f'Development version on host: {hostname}')
-
-    if hostname == "DESKTOP-U9QO0OG":
-        sys.path.insert(0,'D:\\Documents\\code\\ImJoy_dev\\rna-loc')
-    else:
-       sys.path.insert(0,'/Volumes/PILON_HD2/fmueller/Documents/code/ImJoy_dev/rna-loc/')
-
-    import rnaloc
-    importlib.reload(rnaloc)
-    from rnaloc import LOCtoolbox
-    
-
-# Install code from GitHub [In case this should be private, download from Dropbox would also be possible]
-else:
-    print('Stable version')
-    from rnaloc import LOCtoolbox
-
-api.log(dir(rnaloc.__file__))
-api.log(dir(LOCtoolbox))
+from rnaloc import LOCtoolbox
 
 class ImJoyPlugin():
 
@@ -116,9 +93,10 @@ class ImJoyPlugin():
                         Zrange=(ctx.config.Z_min,ctx.config.Z_max),
                         dZ = ctx.config.dZ,
                         plot_callback=None,
-                        progress_callback = self.update_progress
+                        progress_callback = self.update_progress,
+                        log_callback = api.log
         )
-        api.showStatus('Membrane Enrichment Plugin: FINISHED!')
+        api.showStatus('Nuclear Membrane Enrichment Plugin: FINISHED!')
 
 
     # Show plot in ImJoy interface

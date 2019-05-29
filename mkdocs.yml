@@ -62,15 +62,14 @@ nav:
     - Overview: index.md   # Needed for material theme but not for others
     - Analysis tools: tools.md  # This is strange but onlywith this organization this file shows upd in the overview together with the index.md
     - RNA localization:
-      - Cell Membrane distance:
-        - Overview: membraneDistance/memb-overview.md
-        - Analysis: membraneDistance/memb-analysis.md
-        - RNA detection: membraneDistance/memb-rna-detect.md
-        - To Do: membraneDistance/memb-todo.md
-
+      - Cell membrane distance: cell-membrane-dist.md
+      - Nuclear envelope distance: nuc-envelop-dist.md
+    - General workflows:
+      - Image processing: image-processing.md
+      - RNA detection: rna-detection.md
     - About:
-      - Release Notes: about/release-notes.md
-      - Licence: about/licence.md
+      - Release Notes: release-notes.md
+      - Licence: licence.md
 
 
 #theme:

@@ -16,27 +16,17 @@ import os
 from rnaloc import annotationImporter
 from rnaloc import maskGenerator
 from rnaloc import FQtoolbox
-import numpy as np
+from rnaloc import utils
 import re
 from scipy import ndimage
 import json
 import time
 import base64
 from read_roi import read_roi_file 
+import numpy as np
 
 
-# JSON encoder for numpy
-# From https://stackoverflow.com/questions/26646362/numpy-array-is-not-json-serializable
-class NumpyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.ndarray):
-            return obj.tolist()
-        return json.JSONEncoder.default(self, obj)
-
-
-
-
-def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None):
+def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None,log_callback=None):
     '''
     Enrichment at the nuclear MEMBRANE
     Function uses annotations generated in FIJI and creates mask based
@@ -45,6 +35,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     
     # Get input args. Has to be FIRST call!
     input_args = locals()
+    
     
     ## Get folder
     drive, path_and_file = os.path.splitdrive(FQ_file)
@@ -57,21 +48,22 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     
     # *************************************************************************
     # Load nuclear outline
+    utils.log_message(f'Reading segmentation masks of nucleus', callback_fun = log_callback)
     
     # Generate binary masks for a selected data-set
     binaryGen = maskGenerator.BinaryMaskGenerator(erose_size=5,
                                                   obj_size_rem=500,
                                                   save_indiv=True,
-                                                  progress_callback=None)  
+                                                  progress_callback=progress_callback)  
     
     ## Import annotations for nuclei
     path_annot = os.path.join(drive,path_results,'zstack_segmentation')
     folderImporter = annotationImporter.FolderImporter(channels={'nuclei':'C4-'},
                                                        data_category={'roi':''},
                                                        annot_ext='__RoiSet.zip',
-                                                       progress_callback=None)
+                                                       progress_callback=progress_callback)
     annotDict = folderImporter.load(path_annot)
-    print('average roi size:', annotDict['roi_size'])
+    #log_message(f'Average roi size: {annotDict['roi_size']}', callback = log_callback)
     
     
 
@@ -128,12 +120,21 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     dist_membr_pix = np.array([])
     idx = 0
     
-    # Loop over all z-slices
-    print(' == Loop over slices')
-        
+    # Loop over all z-
+    utils.log_message(f'Loop over z-slices', callback_fun = log_callback)
+
+    
+    N_annot = len(annotatFiles)    
     for idx_file, (k_annot, v_annot) in enumerate(annotatFiles.items()):
     
-        print(f'Slice: {k_annot}')
+        
+        # Indicate progress via callback
+        if progress_callback:
+            perc = int(100*(idx_file+1)/(N_annot))
+            progress_callback({"task":"analyze_slices","text":f"{perc}%, {k_annot}","progress":perc})
+        else:
+            print(f'Slice: {k_annot}')
+        
             
         # Get Z coordinate
         m = re.search('.*_Z([0-9]*)\.tif',k_annot)
@@ -141,9 +142,10 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     
         # Check if outside of specified z range
         if Zrange is not None:
-            if (Zmask < Zrange[0]) or (Zmask > Zrange[1]):
-                print(f'Z-slice outside of specified range: {Zmask}')
-                continue
+            if not (Zrange[0]==0 and Zrange[1]==0):
+                if (Zmask < Zrange[0]) or (Zmask > Zrange[1]):
+                    print(f'Z-slice outside of specified range: {Zmask}')
+                    continue
     
         # Get z-range for loop
         Zloop = np.logical_and(Zrna <= Zmask + dZ,Zrna >= Zmask - dZ).flatten()
@@ -174,6 +176,8 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
 
     # *************************************************************************
     #  Load and analyze FQ results
+    utils.log_message(f'ANalyzing smFISH data', callback_fun = log_callback)
+     
     xTicks = binsHist[:-1]
     width = 0.9*np.diff(binsHist)
     width_full = np.diff(binsHist)
@@ -195,6 +199,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     input_args.pop('show_plot', None)
     input_args.pop('plot_callback', None)
     input_args.pop('progress_callback', None)
+    input_args.pop('log_callback', None)
 
     analysis_results = {'args': input_args,
                         'histogram': histo_dist,}
@@ -202,7 +207,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     name_json = os.path.join(path_save, 'DataAnalysis.json')
     
     with open(name_json, 'w') as fp:
-        json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=NumpyEncoder)
+        json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=utils.NumpyEncoder)
 
     # Save histogram of pooled data as csv
     name_csv = os.path.join(path_save, '_HistogramDistancees.csv')
@@ -459,7 +464,7 @@ def process_file(FQ_file, bin_prop = (0,90,20), channels={'cells':'C3-'},data_ca
     name_json = os.path.join(path_save, 'DataAll.json')
 
     with open(name_json, 'w') as fp:
-        json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=NumpyEncoder)
+        json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=utils.NumpyEncoder)
 
     # Save histogram of pooled data as csv
     name_csv = os.path.join(path_save, '_HistogramPooled.csv')

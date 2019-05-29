@@ -10,7 +10,7 @@ import numpy as np
 
 importlib.reload(LOCtoolbox)
 file_load =  '/Volumes/PILON_HD2/fmueller/Documents/Data/ImJoy/rna-loc/NucMembEnrichment/C1-N2_imb-2-670_NG-610_04_R3D_res_GMM.txt'
-Zrange = (40,80)
+Zrange = (0,0)
 dZ=0
 binsHist = np.fromstring('-100,-50,-10,10,50,100,300',dtype=int, sep=',')
 

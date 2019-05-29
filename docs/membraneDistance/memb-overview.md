@@ -1,12 +1,12 @@
-# Measure RNA distance distribution to cell membrane
+# RNA distance distribution to cell membrane
 Workflow to quantify the distance distribution of RNAs to the cell membrane.
 
 * [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/) to detect RNA positions.
-* **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=rna-loc&plugin=muellerflorian/rna-loc:CellMembraneDistance@Stable"  target="_blank">**here**</a>
+* **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:CellMembraneDistance@Stable"  target="_blank">**here**</a>
 
-ImJoy plugins will be available in the  workspace: **`ExpGradient`**
+ImJoy plugins will be available in the  workspace: **`MembDist`**
 
-You also need the, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
+You will also need the ImJoy plugin engine, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
 
 ## Test date
 You can download already processed test data for the Cell membrane enrichment plugin,

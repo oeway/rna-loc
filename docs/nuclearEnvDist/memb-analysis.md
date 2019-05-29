@@ -1,58 +1,46 @@
-# RNA distance distribution to cell membrane
+# RNA distance distribution to nuclear envelope
 Workflow to quantify the distance distribution of RNAs to the cell membrane.
 
 * [**FISH-quant**](https://bitbucket.org/muellerflorian/fish_quant/) to detect RNA positions.
-* **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:CellMembraneDistance@Stable"  target="_blank">**here**</a>
+* **ImJoy**: you can install the plugin from  <a href="http://imjoy.io/#/app?w=MembDist&plugin=muellerflorian/rna-loc:NuclearEnvelopeDistance@Stable"  target="_blank">**here**</a>
 
 ImJoy plugins will be available in the  workspace: **`MembDist`**
 
-You will also need the ImJoy plugin engine, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
+You also need the Python plugin, please consult the [ImJoy documentation](https://imjoy.io/docs/#/user-manual?id=python-engine).
 
-## Test date
-You can download already processed test data for the Cell membrane enrichment plugin,
-from [**Dropbox**](https://www.dropbox.com/s/0sbsmbg5xlccamp/img1.zip?dl=0).
-The zip archive contains data following the naming conventions of the examples below.
 
 ## Analysis overview
 
-For each RNA, we determine the closest distance of an RNA to a membrane. One thing to keep in mind more pixel close to the membrane than far away, e.g. in the centre of
-the cell. A simple example is a circle. The maximum distance that you can be away from the “membrane” is the radius of the circle. However, there is only one possibility to be that far away (in the centre). However, there are many more “close” positions.  Plotting a histogram of the distance to the membrane for all possible positions in the circle,  will yield a distribution that strongly enriched for small distances.
+For each RNA, we determine the closest distance of an RNA to the nuclear envelope.
+This distance is negative for an RNA inside a nucleus, and positive for an RNA
+outside of a nucleus.
 
-To normalised for this effect, we calculate all possible distance from the membrane
-for a given cell with a **distance transformation**. This transformation results in
-an image, where the pixel values are not fluorescence intensities but distance values. An example is shown below. The blue lines are the cell outlines. The green dots are the detected RNAs. The image is the distance transform. The intensity values are distance to the membrane in pixels.
+Distances for all RNAs will be summarised in histogram. These counts are then normalised
+as follows
+1. Normalisation for complete spatial randomness. There is "more space" away from
+  a nucleus than close to it. This means that for a randomly distributed RNA
+  it is less likely to be close to a nucleus, then being further away. We consider
+  this by calculating a histogram with the distance of all pixels in the embryo
+  to the nuclei. The RNA counts are then normalised with this pixel histogram.
+2. The normalised histogram is then further normalised such that it sums up to 1.
 
-<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/dist_transform.png" width="400px"></img>
+<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/nucEnvDist/dist_histogram.png" width="400px"></img>
 
-We measure for all RNAs the distance to the membrane and calculate a
-histogram. We report the
-
--   Raw RNA distance histogram.
--   Normalised RNA histogram (values add to 1).
--   Normalised distance histogram of all pixels in the cell.
--   Normalised RNA histogram with the pixel histogram.
-
-<img src="https://raw.githubusercontent.com/muellerflorian/rna-loc/master/docs/img/memb_summaryPlot.png" width="600px"></img>
-
-
-
-
-
-## Data organisation
+## Data organization
 
 We enforce a strict data organisation for this analysis. More information
 about can be found in the dedicated section below.
 
-1.  One folder per sample ("parental folder"). Images have to be stored as
-    individual channels. More details [here](image-processing.md#multi-channel-conversion)
+1.  One folder per multi-channel image ("parental folder").
 2.  Each channel is saved as a separate `.tif` file containing all z-slices. Information
     for how to convert stacks can be found here are [here](memb-analysis.md#multi-channel-conversion).
 3.  RNA molecules are detected with [FISH-quant](https://bitbucket.org/muellerflorian/fish_quant). Analysis results are also stored directly in the parental folder. RNA detection is described in more detail [here](memb-rna-detect.md).
-4.  Membrane annotations are stored in a dedicated subfolder `zstack_segmentation`.
+4.  Annotations of nuclear envelope are stored in a dedicated subfolder `zstack_segmentation`.
     More information [below](memb-analysis.md#annotations-of-cell-membrane).
+5. The outline of the embryo has to be store as a single FIJI ROI named `embryo_contour.roi`.
 
 As an example, we have one image `img1`  with 3 channels. The first channels contain
-analysed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
+analyzed smFISH data, the third one contains the cell membrane annotations for two Z slices (slice 3 and 8).
 
 ```
 .
@@ -63,6 +51,7 @@ analysed smFISH data, the third one contains the cell membrane annotations for t
 │  ├─ C2-img1.tif                          # smFISH image of (channel 2)
 │  ├─ C2-img1__spots.txt                   # FQ detection results (channel 2)
 │  ├─ C2-img1__settings_MATURE.txt         # FQ detection settings (channel 2)
+│  ├─ embryo_contour.roi                   # Embryo outline
 │  ├─ zstack_segmentation/
 │  │  ├─ C3-img1_Z3.tif                    # Image of z-slice 1
 │  │  ├─ C3-img1_Z3__RoiSet.zip            # Membrane annotation of slice 1
@@ -90,8 +79,7 @@ Detection of RNAs is performed with FISH-quant and detailed [here](memb-rna-dete
 
 In order to be able to compute the enrichment towards cell membrane or nuclear
 envelope, these membranes have to be annotated in EACH z-slice that should be
-considered in the analysis. Below we describe a manual annotation with FIJI,
-in the future automated segmentation results could be considered as well.
+considered in the analysis. This annotation can either be done manually, or (**TODO**) ~~automatically with segmentation tools~~.
 
 ### Manual with FIJI
 
@@ -123,10 +111,12 @@ To perform the actual annotation, follow these steps
 
 **IMPORTANT**: these annotations could be used for training of a neural network. If this is intended, then ALL structures, e.g. nuclei, have to be annotated. Unwanted elements, e.g. nuclei touching the cell border, can be removed in a post-processing step.
 
+### ~~Automated with DeepLearning~~
+**TODO**.
 
 ## Analysis with ImJoy
 
-The entire functionality of the plugin can be controlled within the plugin
+The entire functinality of the plugin can be controlled within the plugin
 window. If you expand the plugin, you will see all parameters and operations
 that can be performed
 

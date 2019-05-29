@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
       name='rnaloc',
-      version='0.1.1',
+      version='0.1.2',
       description='Python code to analyze RNA localization data.',
       url='https://github.com/muellerflorian/rna-loc',
       author='Florian MUELLER',
