@@ -29,17 +29,18 @@ the [FQ manual](https://bitbucket.org/muellerflorian/fish_quant/src/master/Docum
 7.  Set **pre-detection settings**. FQ will test how many RNAs are detected with a
     range of user-defined intensity thresholds (based on the manual inspection of
     the image from above).
-        1. Open dedicated interface:	Button `Detect`
-        0. In the user-dialog change the first two parameter: minimum and maximum
+
+    1. Open dedicated interface:	Button `Detect`
+    0. In the user-dialog change the first two parameter: minimum and maximum
            threshold to test. We usually use a minimum value that’s somewhat lower
            than the lowest RNAs to also consider intensity value corresponding to background.
-        0. FQ will calculate the number of detected RNAs for a range of values in
+    0. FQ will calculate the number of detected RNAs for a range of values in
            this interval. Depending on the size of the image, this can take a little while. Once done, a plot with the number of detected RNAs as a function of the different thresholds is shown. If the specified range is not appropriate, it can be changed in this interface the computation be repeated.
-         0. Ideally, this curve shows a plateau for a value range corresponding to a
+    0. Ideally, this curve shows a plateau for a value range corresponding to a
            good detection threshold. If that’s not the case, a reasonable value
            corresponding to a visual assessment of what individual RNAs are should be chosen. A pre-detection with a given detection threshold can be perform and the results be inspected in a separate window.
 
-        One other parameter that could be important to adjust is the **cropping region** around each RNA that is considered for analysis and fitting. Reducing this size allows sometimes to better detect closely spaced RNAs but at the cost of an  imprecision in the fit. For most applications a value of +/- 2 voxels in XY and Z are a good compromise.
+      One other parameter that could be important to adjust is the **cropping region** around each RNA that is considered for analysis and fitting. Reducing this size allows sometimes to better detect closely spaced RNAs but at the cost of an  imprecision in the fit. For most applications a value of +/- 2 voxels in XY and Z are a good compromise.
 
 8.  Once you are satisfied with the settings press on `Perform detection for all cells` to return the main window.
 9.  Press button `Fit` to fit each detected spot with a 3D Gaussian function.
@@ -49,8 +50,8 @@ the [FQ manual](https://bitbucket.org/muellerflorian/fish_quant/src/master/Docum
     As a file-name specify `FQ__settings_MATURE.txt`
 12. Depending on which analysis you want to perform, you either save the detection
     results or only the specified cell outline
-13. If you are satisfied with these detection results, you can save them directly:  `[FQ] Main`>`Save`>`Save ???`
-14. If you would like to also analyse RNA aggregates, you can save only the outline: `[FQ] Main`>`Save`>`Save ???`
+13. If you are satisfied with these detection results, you can save them directly:  `[FQ] Main`>`Save`>`Detection spots [All]`.
+14. If you would like to also analyse RNA aggregates, you can save only the outline: `[FQ] Main`>`Save`>`Outline of cells`.
 
 ## Detection of clustered RNAs
 Her we use an approach that detects individual RNAs and then decomposes aggregates into individual RNAs (for more information see our [Nat Communications paper](https://www.nature.com/articles/s41467-018-06868-w).This requires that the detection of individual RNA as described above has been performed.
@@ -62,6 +63,7 @@ will be adequate
 
 ### Outline specific detection settings
 Here, each outline has it's own settings file. We provide a script [`WRAPPER_smFISH__GMM_v1.m`](https://bitbucket.org/muellerflorian/fish_quant/src/master/locFISH/WRAPPER_smFISH__GMM_v1.m) on the FQ bitbucket repository to analyse these data.
+
 1. It requires that images, outlines, and settings are in the same folder.
 2. You have to specify a string that identifies outline files, and a  string that
  identifies the settings files. Importantly, replacing one string by the other should
