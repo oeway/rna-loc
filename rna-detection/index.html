@@ -626,18 +626,19 @@ the <a href="https://bitbucket.org/muellerflorian/fish_quant/src/master/Document
 <li>
 <p>Set <strong>pre-detection settings</strong>. FQ will test how many RNAs are detected with a
     range of user-defined intensity thresholds (based on the manual inspection of
-    the image from above).
-        1. Open dedicated interface:    Button <code>Detect</code>
-        0. In the user-dialog change the first two parameter: minimum and maximum
-           threshold to test. We usually use a minimum value that’s somewhat lower
-           than the lowest RNAs to also consider intensity value corresponding to background.
-        0. FQ will calculate the number of detected RNAs for a range of values in
-           this interval. Depending on the size of the image, this can take a little while. Once done, a plot with the number of detected RNAs as a function of the different thresholds is shown. If the specified range is not appropriate, it can be changed in this interface the computation be repeated.
-         0. Ideally, this curve shows a plateau for a value range corresponding to a
-           good detection threshold. If that’s not the case, a reasonable value
-           corresponding to a visual assessment of what individual RNAs are should be chosen. A pre-detection with a given detection threshold can be perform and the results be inspected in a separate window.</p>
-<pre><code>One other parameter that could be important to adjust is the **cropping region** around each RNA that is considered for analysis and fitting. Reducing this size allows sometimes to better detect closely spaced RNAs but at the cost of an  imprecision in the fit. For most applications a value of +/- 2 voxels in XY and Z are a good compromise.
-</code></pre>
+    the image from above).</p>
+<ol>
+<li>Open dedicated interface:    Button <code>Detect</code></li>
+<li>In the user-dialog change the first two parameter: minimum and maximum
+       threshold to test. We usually use a minimum value that’s somewhat lower
+       than the lowest RNAs to also consider intensity value corresponding to background.</li>
+<li>FQ will calculate the number of detected RNAs for a range of values in
+       this interval. Depending on the size of the image, this can take a little while. Once done, a plot with the number of detected RNAs as a function of the different thresholds is shown. If the specified range is not appropriate, it can be changed in this interface the computation be repeated.</li>
+<li>Ideally, this curve shows a plateau for a value range corresponding to a
+       good detection threshold. If that’s not the case, a reasonable value
+       corresponding to a visual assessment of what individual RNAs are should be chosen. A pre-detection with a given detection threshold can be perform and the results be inspected in a separate window.</li>
+</ol>
+<p>One other parameter that could be important to adjust is the <strong>cropping region</strong> around each RNA that is considered for analysis and fitting. Reducing this size allows sometimes to better detect closely spaced RNAs but at the cost of an  imprecision in the fit. For most applications a value of +/- 2 voxels in XY and Z are a good compromise.</p>
 </li>
 <li>
 <p>Once you are satisfied with the settings press on <code>Perform detection for all cells</code> to return the main window.</p>
@@ -649,8 +650,8 @@ the <a href="https://bitbucket.org/muellerflorian/fish_quant/src/master/Document
     As a file-name specify <code>FQ__settings_MATURE.txt</code></li>
 <li>Depending on which analysis you want to perform, you either save the detection
     results or only the specified cell outline</li>
-<li>If you are satisfied with these detection results, you can save them directly:  <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Save ???</code></li>
-<li>If you would like to also analyse RNA aggregates, you can save only the outline: <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Save ???</code></li>
+<li>If you are satisfied with these detection results, you can save them directly:  <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Detection spots [All]</code>.</li>
+<li>If you would like to also analyse RNA aggregates, you can save only the outline: <code>[FQ] Main</code>&gt;<code>Save</code>&gt;<code>Outline of cells</code>.</li>
 </ol>
 <h2 id="detection-of-clustered-rnas">Detection of clustered RNAs<a class="headerlink" href="#detection-of-clustered-rnas" title="Permanent link">&para;</a></h2>
 <p>Her we use an approach that detects individual RNAs and then decomposes aggregates into individual RNAs (for more information see our <a href="https://www.nature.com/articles/s41467-018-06868-w">Nat Communications paper</a>.This requires that the detection of individual RNA as described above has been performed.</p>
@@ -659,22 +660,24 @@ the <a href="https://bitbucket.org/muellerflorian/fish_quant/src/master/Document
 outline files. Depending on how your data is organised a different workflow below
 will be adequate</p>
 <h3 id="outline-specific-detection-settings">Outline specific detection settings<a class="headerlink" href="#outline-specific-detection-settings" title="Permanent link">&para;</a></h3>
-<p>Here, each outline has it's own settings file. We provide a script <a href="https://bitbucket.org/muellerflorian/fish_quant/src/master/locFISH/WRAPPER_smFISH__GMM_v1.m"><code>WRAPPER_smFISH__GMM_v1.m</code></a> on the FQ bitbucket repository to analyse these data.
-1. It requires that images, outlines, and settings are in the same folder.
-2. You have to specify a string that identifies outline files, and a  string that
+<p>Here, each outline has it's own settings file. We provide a script <a href="https://bitbucket.org/muellerflorian/fish_quant/src/master/locFISH/WRAPPER_smFISH__GMM_v1.m"><code>WRAPPER_smFISH__GMM_v1.m</code></a> on the FQ bitbucket repository to analyse these data.</p>
+<ol>
+<li>It requires that images, outlines, and settings are in the same folder.</li>
+<li>You have to specify a string that identifies outline files, and a  string that
  identifies the settings files. Importantly, replacing one string by the other should
- then yield the respective other files.
-3. The script will then loop over all outlines, and process them with the GMM approach
-4. Results will stored in a newly created folder with the same name as the outline file.
-  Here two subfolders are created,
-  -   <code>results_GMM</code> contains the RNA detection with the GMM (to decompose foci into
+ then yield the respective other files.</li>
+<li>The script will then loop over all outlines, and process them with the GMM approach</li>
+<li>Results will stored in a newly created folder with the same name as the outline file.
+  Here two subfolders are created,</li>
+<li><code>results_GMM</code> contains the RNA detection with the GMM (to decompose foci into
       individual RNAs). The most important files are the text files ending
       with <code>_res_GMM.txt</code> containing the RNA detection results, which will be used
       to perform the co-localisation. The folder further contains a subfolder <code>#plots</code>
       with a PDF showing the results of the GMM detection. Individual RNAs are
        shown in green, decomposed foci with a red number indicating how many RNAs
-      were estimated to be in each foci.
-  -   <code>results_noGMM</code> contains the RNA detection results without the GMM.</p>
+      were estimated to be in each foci.</li>
+<li><code>results_noGMM</code> contains the RNA detection results without the GMM.</li>
+</ol>
 <p>In the example below, the strings would be <code>outlines.txt</code> for outlines, and
 <code>settings_MATURE.txt</code> for the settings. It also shows the newly created folder,
 containing the GMM results.</p>
