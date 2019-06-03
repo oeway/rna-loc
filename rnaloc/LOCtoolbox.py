@@ -210,7 +210,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
         json.dump(analysis_results, fp,sort_keys=True, indent=4, cls=utils.NumpyEncoder)
 
     # Save histogram of pooled data as csv
-    name_csv = os.path.join(path_save, '_HistogramDistancees.csv')
+    name_csv = os.path.join(path_save, '_HistogramDistances.csv')
     histo_dist.pop('bins', None)
     csv_header  = ';'.join(histo_dist.keys())
     hist_values = np.array( list(histo_dist.values())).transpose()
