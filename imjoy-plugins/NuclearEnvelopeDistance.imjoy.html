@@ -6,7 +6,7 @@
 {
   "name": "NuclearEnvelopeDistance",
   "type": "native-python",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Plugin to analyze enrichment of RNAs relative to cell membranes.",
   "tags": ["stable","dev"],
   "ui": [
@@ -24,7 +24,7 @@
   "env": "conda create -n rna-localize python=3.6",
   "requirements": { "stable":["git+https://github.com/muellerflorian/rna-loc@fa5aac5#egg=rnaloc","scikit-image", "read-roi", "nested-lookup"],
                     "dev": ["scikit-image", "read-roi", "nested-lookup",
-                     "pip:  --editable /Volumes/PILON_HD2/fmueller/Documents/code/ImJoy/rna-loc"]},
+                            "pip:  --editable /Volumes/PILON_HD2/fmueller/Documents/code/ImJoy/rna-loc"]},
   "dependencies": ["muellerflorian/rna-loc:MembraneDistProgress"]
 }
 </config>
@@ -45,7 +45,7 @@ import numpy as np
 if sys.platform == "darwin":
     import matplotlib
     matplotlib.use('PS')
- 
+
 from rnaloc import LOCtoolbox
 
 class ImJoyPlugin():
