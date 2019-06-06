@@ -26,7 +26,7 @@ from read_roi import read_roi_file
 import numpy as np
 
 
-def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None,log_callback=None):
+def calc_nuclear_enrichment(FQ_file,binsHist,channels={'nuclei':''},show_plots = False,Zrange=None,dZ=2,plot_callback=None,progress_callback=None,log_callback=None):
     '''
     Enrichment at the nuclear MEMBRANE
     Function uses annotations generated in FIJI and creates mask based
@@ -48,7 +48,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     
     # *************************************************************************
     # Load nuclear outline
-    utils.log_message(f'Reading segmentation masks of nucleus', callback_fun = log_callback)
+    utils.log_message(f'Reading segmentation masks of nuclei', callback_fun = log_callback)
     
     # Generate binary masks for a selected data-set
     binaryGen = maskGenerator.BinaryMaskGenerator(erose_size=5,
@@ -58,15 +58,13 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
     
     ## Import annotations for nuclei
     path_annot = os.path.join(drive,path_results,'zstack_segmentation')
-    folderImporter = annotationImporter.FolderImporter(channels={'nuclei':'C4-'},
+    folderImporter = annotationImporter.FolderImporter(channels=channels,
                                                        data_category={'roi':''},
                                                        annot_ext='__RoiSet.zip',
                                                        progress_callback=progress_callback)
     annotDict = folderImporter.load(path_annot)
-    #log_message(f'Average roi size: {annotDict['roi_size']}', callback = log_callback)
-    
-    
 
+    
     # The generate function uses as an input the sub-dictionary for one data-category and one channel
     annotatFiles = annotDict['roi']['nuclei']
     mask_dict_nuclei = binaryGen.generate(annotatFiles)
@@ -176,7 +174,7 @@ def calc_nuclear_enrichment(FQ_file,binsHist,show_plots = False,Zrange=None,dZ=2
 
     # *************************************************************************
     #  Load and analyze FQ results
-    utils.log_message(f'ANalyzing smFISH data', callback_fun = log_callback)
+    utils.log_message(f'Analyzing smFISH data', callback_fun = log_callback)
      
     xTicks = binsHist[:-1]
     width = 0.9*np.diff(binsHist)

@@ -6,7 +6,7 @@
 {
   "name": "NuclearEnvelopeDistance",
   "type": "native-python",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Plugin to analyze enrichment of RNAs relative to cell membranes.",
   "tags": ["stable","dev"],
   "ui": [
@@ -84,8 +84,8 @@ class ImJoyPlugin():
                             'w':17, 'h':15,
                             'data': {
                                 "task":"import_annot_categ",
-                                "text":"YES!!!!!!",
-                                "progress":50
+                                "text":"Initated!",
+                                "progress":0
                             }
             })
 
@@ -93,6 +93,7 @@ class ImJoyPlugin():
         LOCtoolbox.calc_nuclear_enrichment(
                         FQ_file=file_open,
                         binsHist=np.fromstring(ctx.config.hist_bins,dtype=int, sep=','),
+                        channels={'nuclei':''},
                         show_plots = False,
                         Zrange=(ctx.config.Z_min,ctx.config.Z_max),
                         dZ = ctx.config.dZ,

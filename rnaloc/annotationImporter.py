@@ -117,9 +117,7 @@ class FolderImporter(AnnotationImporter):
 
         # Loop over data categories and verify if corresponding folder exists
         N_categ = len(self.annotDict['config']['data_category'])
-        
-        print(N_categ)
-        print(annotDict['config']['data_category'])
+
         for idx_categ, (key_categ, categ) in enumerate(self.annotDict['config']['data_category'].items()):
 
             # Plot progress via callback
