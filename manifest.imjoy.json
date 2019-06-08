@@ -7,7 +7,7 @@
   {
    "name": "CellMembraneDistance",
    "type": "native-python",
-   "version": "0.1.4",
+   "version": "0.1.5",
    "description": "Plugin to analyze enrichment of RNAs relative to cell membranes.",
    "tags": [
     "stable",
@@ -30,7 +30,7 @@
    "env": "conda create -n rna-memb-dist python=3.6",
    "requirements": {
     "stable": [
-     "git+https://github.com/muellerflorian/rna-loc@7e3ad96e2ead46dacc3666b8a4141fddc73b7f08#egg=rnaloc",
+     "git+https://github.com/muellerflorian/rna-loc@860197d#egg=rnaloc",
      "scikit-image",
      "read-roi",
      "nested-lookup"
@@ -45,7 +45,7 @@
    "dependencies": [
     "muellerflorian/rna-loc:MembraneDistProgress"
    ],
-   "uri": "imjoy-plugins/CellMembraneDistance.imjoy.html"
+   "uri": "imjoy-plugins\\CellMembraneDistance.imjoy.html"
   },
   {
    "name": "MembraneDistProgress",
@@ -70,12 +70,12 @@
     "w": 15,
     "h": 12
    },
-   "uri": "imjoy-plugins/MembraneDistProgress.imjoy.html"
+   "uri": "imjoy-plugins\\MembraneDistProgress.imjoy.html"
   },
   {
    "name": "NuclearEnvelopeDistance",
    "type": "native-python",
-   "version": "0.1.5",
+   "version": "0.1.6",
    "description": "Plugin to analyze enrichment of RNAs relative to cell membranes.",
    "tags": [
     "stable",
@@ -96,7 +96,7 @@
    "env": "conda create -n rna-memb-dist python=3.6",
    "requirements": {
     "stable": [
-     "git+https://github.com/muellerflorian/rna-loc@7e3ad96e2ead46dacc3666b8a4141fddc73b7f08#egg=rnaloc",
+     "git+https://github.com/muellerflorian/rna-loc@860197d#egg=rnaloc",
      "scikit-image",
      "read-roi",
      "nested-lookup"
@@ -111,7 +111,7 @@
    "dependencies": [
     "muellerflorian/rna-loc:MembraneDistProgress"
    ],
-   "uri": "imjoy-plugins/NuclearEnvelopeDistance.imjoy.html"
+   "uri": "imjoy-plugins\\NuclearEnvelopeDistance.imjoy.html"
   }
  ],
  "collections": []
